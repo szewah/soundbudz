@@ -7,8 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING
   }, {});
   User.associate = function(models) {
-    User.hasMany(models)
+    User.hasMany(models.Messages);
+    User.belongsToMany(models.Group, {
+      through: "UserGroups",
+      foreignKey: "userID"
+    })
     // associations can be defined here
   };
   return User;
-};
+};  

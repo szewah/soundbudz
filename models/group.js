@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Group.associate = function(models) {
     // associations can be defined here
+    GroupChat.belongsToMany(models.User, {
+      through: "UserGroups",
+      foreignKey: "groupId"
+    });
   };
   return Group;
 };
