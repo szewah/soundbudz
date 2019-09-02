@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userID: {
-        type: Sequelize.STRING
+        primaryKey: true,
+        type: Sequelize.INTEGER
       },
       groupId: {
-        type: Sequelize.STRING
+        primaryKey: true,
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

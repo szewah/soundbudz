@@ -2,7 +2,6 @@
 React, Express, MySQL, Sequelize, Bootstrap
 
 ## Installation
-
 Download the file then
 
 ```
