@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
-import {Navbar, Nav} from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import Logo from '../../logo/blacklogo.png';
 
-class Navbar extends Component {
+class Navigation extends Component {
     state = {
     }
-
 
     render() {
         return (
             <Navbar bg="light" expand="sm">
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="#home">
+                <img
+                    src={Logo}
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                />
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
@@ -34,3 +41,5 @@ class Navbar extends Component {
         )
     }
 }
+
+export default Navigation;
