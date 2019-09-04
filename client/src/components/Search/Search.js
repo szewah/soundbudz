@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Form, FormControl, Button}  from 'react-bootstrap';
+import {Form, FormGroup, FormControl, Button}  from 'react-bootstrap';
+import './style.css';
 
 
 class SearchField extends Component {
@@ -11,10 +12,14 @@ class SearchField extends Component {
 
     render(){
         return (
-            <Form inline>
-                <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-                <Button type="submit">Submit</Button>
-            </Form>
+            <div className="search-container">
+                <Form.Group>
+                    <FormControl type="text" placeholder="Search"/>
+                        <div className="btn-container">
+                            <Button type="submit">Submit</Button>
+                        </div>
+                </Form.Group>
+            </div>
         )
     }
 

@@ -1,6 +1,11 @@
 #favouriteAristh1 {
-    margin-top: 50px;
+    margin-top: 200px;
     font-size: 35px;
     font-weight: 300;
     text-align: center;
+}
+
+#searchBar {
+    margin: auto;
+    width: 100%;
 }
