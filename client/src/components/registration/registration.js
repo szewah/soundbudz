@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './style.css';
 
-class Login extends Component {
+class Registration extends Component {
     state = {
 
     }
@@ -21,9 +21,12 @@ class Login extends Component {
                         <Button type="submit">Submit</Button>
                     </div>
                 </Form>
+                <div className="container">
+                    <p style={{marginTop:"20px"}}>Don't have an account? Register here</p>
+                </div>
             </div>
         )
     }
 }
 
-export default Login;
+export default Registration;
