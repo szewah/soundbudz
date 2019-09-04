@@ -1,18 +1,16 @@
 import React from 'react';
 import './App.css';
-import SearchField from './components/Search/Search';
 import Navbar from './components/navbar/Navbar';
+import HomePage from './pages/homepage/homepage';
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-    <Navbar/>
-      <header className="App-header">
-        <p>
-         Welcome to soundbudz
-        </p>
-        <SearchField />
-      </header>
+      <Navbar/>
+      <HomePage />
+
 
     </div>
   );
