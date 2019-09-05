@@ -26,11 +26,9 @@ class SearchField extends Component {
         const ticketmasterURL = "https://app.ticketmaster.com/discovery/v2/events/?keyword=";
         const term = this.state.search.split(" ").join("+");
         console.log(term);
-        const searchKey = process.env.TM_KEY;
-        const dummyKey = process.env.DUMMY_KEY;
-        console.log(dummyKey);
+        const searchKey = process.env.REACT_APP_TM_KEY;
 
-        axios.get(cors + ticketmasterURL + term + `&apikey=${process.env.TM_KEY}`)
+        axios.get(cors + ticketmasterURL + term + "&apikey=" + searchKey)
         .then(response => {
             console.log(response);
         })

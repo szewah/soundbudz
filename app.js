@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var app = express();
 var PORT = process.env.PORT || 3001;
+const cors = require("cors");
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -18,8 +19,20 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//Set up cors
+app.use(
+  cors({
+    origin: "*",
+    allowedHeaders: "Authorization",
+    preflightContinue: false,
+    credentials: true,
+    optionSuccessStatus: 200
+  })
+)
+
+
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
 app.listen(PORT, function() {
   console.log(`Listening on port http://localhost:${PORT}`);
