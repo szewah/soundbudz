@@ -36,10 +36,11 @@ class SearchField extends Component {
         axios.get(corsAnywhere + ticketmasterURL + term + "&apikey=" + searchKey)
         .then(response => {
             //response of search
-            console.log(response);
+            console.log(response.data._embedded.events);
+            const events = this.state.events;
+            this.setState({events: response.data._embedded.events})
             //set event state to show results of the api call
-            this.setState({events: res_data._embedded.events});
-            console.log(events);
+
 
         })
         .catch(err => console.log(err));
