@@ -11,20 +11,21 @@ class Navigation extends Component {
     render() {
         return (
             <Navbar bg="light" expand="sm">
-            <Navbar.Brand href="#home">
-                <img
-                    src={Logo}
-                    className="d-inline-block align-top"
-                    alt="Soundbudz logo"
-                />
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-sm-2">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/events">Events</Nav.Link>
-                    <Nav.Link href="/login">Login</Nav.Link>
-                </Nav>
+                <Navbar.Brand href="/">
+                    <img
+                        src={Logo}
+                        className="d-inline-block align-top"
+                        alt="Soundbudz logo"
+                    />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-sm-2">
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/events">Events</Nav.Link>
+                        <Nav.Link href="/registration">Registration</Nav.Link>
+                        <Nav.Link href="/login">Login</Nav.Link>
+                    </Nav>
             </Navbar.Collapse>
             </Navbar>
         )

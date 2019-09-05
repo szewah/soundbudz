@@ -11,15 +11,25 @@ class SearchField extends Component {
         redirect: false
     };
 
+    handleChange = (event) => {
+
+    };
+
+    handleSubmit = (event) => {
+
+    };
+
     render(){
         return (
             <div className="search-container">
-                <Form.Group>
-                    <FormControl type="text" placeholder="Search"/>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Group>
+                        <FormControl type="text" placeholder="Search" value={this.state.search} onChange={this.handleChange}/>
                         <div className="btn-container">
                             <Button type="submit">Submit</Button>
                         </div>
-                </Form.Group>
+                    </Form.Group>
+                </Form>
             </div>
         )
     }

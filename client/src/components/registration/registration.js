@@ -4,7 +4,8 @@ import './style.css';
 
 class Registration extends Component {
     state = {
-
+        name: '',
+        surname: '',
     }
 
     render() {
@@ -12,10 +13,10 @@ class Registration extends Component {
             <div className="login-email-container">
                 <Form>
                     <Form.Group>
-                        <Form.Control type="text" name="name" placeholder="Email"></Form.Control>
+                        <Form.Control type="text" name="name" placeholder="Name"></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="text" name="surname" placeholder="Email"></Form.Control>
+                        <Form.Control type="text" name="surname" placeholder="Surname"></Form.Control>
                     </Form.Group>
                     <Form.Group>
                         <Form.Control type="email" name="email" placeholder="Email"></Form.Control>
@@ -27,9 +28,6 @@ class Registration extends Component {
                         <Button type="submit">Submit</Button>
                     </div>
                 </Form>
-                <div className="container">
-                    <p style={{marginTop:"20px"}}>Don't have an account? Register here</p>
-                </div>
             </div>
         )
     }
