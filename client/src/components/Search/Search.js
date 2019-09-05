@@ -15,24 +15,36 @@ class SearchField extends Component {
 
     handleChange = (event) => {
         const {name, value} = event.target;
+        //this sets all the input to lower case
         this.setState({[name]: value.toLowerCase()});
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
-        
-        console.log("I was clicked");
-        const cors = "https://cors-anywhere.herokuapp.com/";
+
+        //cross origin set up to allow for api search
+        const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+        //ticket master api
         const ticketmasterURL = "https://app.ticketmaster.com/discovery/v2/events/?keyword=";
+        //concat search terms
         const term = this.state.search.split(" ").join("+");
-        console.log(term);
+        console.log("DEBUG" + term);
+        //api key
         const searchKey = process.env.REACT_APP_TM_KEY;
 
-        axios.get(cors + ticketmasterURL + term + "&apikey=" + searchKey)
+        //axios get ticket master results 
+        axios.get(corsAnywhere + ticketmasterURL + term + "&apikey=" + searchKey)
         .then(response => {
+            //response of search
             console.log(response);
+            //set event state to show results of the api call
+            this.setState({events: res_data._embedded.events});
+            console.log(events);
+
         })
         .catch(err => console.log(err));
+
+        //set the redirect state to true
         this.setState({redirect: true});
     };
 
