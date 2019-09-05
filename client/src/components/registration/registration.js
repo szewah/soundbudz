@@ -12,6 +12,12 @@ class Registration extends Component {
             <div className="login-email-container">
                 <Form>
                     <Form.Group>
+                        <Form.Control type="text" name="name" placeholder="Email"></Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control type="text" name="surname" placeholder="Email"></Form.Control>
+                    </Form.Group>
+                    <Form.Group>
                         <Form.Control type="email" name="email" placeholder="Email"></Form.Control>
                     </Form.Group>
                     <Form.Group>

@@ -29,10 +29,10 @@ class Login extends Component {
             <div className="login-email-container">
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
-                        <Form.Control name="email" type="email" value={this.state.email} placeholder="Email" onChange={this.handleChange}></Form.Control>
+                        <Form.Control type="email" name="email"  value={this.state.email} placeholder="Email" onChange={this.handleChange}></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control name="password" type="password" value={this.state.password} placeholder="Password" onChange={this.handleChange}></Form.Control>
+                        <Form.Control type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange}></Form.Control>
                     </Form.Group>
                     <div className="btn-container">
                         <Button type="submit">Submit</Button>
