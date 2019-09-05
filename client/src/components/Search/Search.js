@@ -20,14 +20,17 @@ class SearchField extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        
         console.log("I was clicked");
         const cors = "https://cors-anywhere.herokuapp.com/";
         const ticketmasterURL = "https://app.ticketmaster.com/discovery/v2/events/?keyword=";
         const term = this.state.search.split(" ").join("+");
+        console.log(term);
         const searchKey = process.env.TM_KEY;
-        axios.get(
-            cors + ticketmasterURL + term + "&apikey=" + searchKey
-            )
+        const dummyKey = process.env.DUMMY_KEY;
+        console.log(dummyKey);
+
+        axios.get(cors + ticketmasterURL + term + `&apikey=${process.env.TM_KEY}`)
         .then(response => {
             console.log(response);
         })
