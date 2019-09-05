@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import {Form, FormControl, Button}  from 'react-bootstrap';
 import './style.css';
@@ -8,6 +9,7 @@ class SearchField extends Component {
 
     state = {
         search: "",
+        events:[],
         redirect: false
     };
 
@@ -18,6 +20,18 @@ class SearchField extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        console.log("I was clicked");
+        const cors = "https://cors-anywhere.herokuapp.com/";
+        const ticketmasterURL = "https://app.ticketmaster.com/discovery/v2/events/?keyword=";
+        const term = this.state.search.split(" ").join("+");
+        const searchKey = process.env.TM_KEY;
+        axios.get(
+            cors + ticketmasterURL + term + "&apikey=" + searchKey
+            )
+        .then(response => {
+            console.log(response);
+        })
+        .catch(err => console.log(err));
         this.setState({redirect: true});
     };
 
