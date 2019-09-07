@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 import {Form, FormControl, Button}  from 'react-bootstrap';
 import './style.css';
+
 
 
 class SearchField extends Component {
 
     state = {
         search: "",
-        events:[],
         redirect: false,
-        mounted: false
     };
 
 
@@ -23,7 +22,6 @@ class SearchField extends Component {
 
 
     apiCall = () =>{
-
         //cross origin set up to allow for api search
         const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
         //ticket master api
@@ -38,6 +36,10 @@ class SearchField extends Component {
             //response of search
             console.log(res.data._embedded.events);
             // this.setState({ events: res.data._embedded.events });
+            this.props.history.push({
+                pathname: '/events',
+                state: {events_data: JSON.stringify(res.data._embedded.events)}
+            })
         })
         .catch(err => console.log(err));
     };
@@ -52,9 +54,9 @@ class SearchField extends Component {
 
 
     render(){
-        // if (this.state.redirect) {
-        //     return <Redirect to={`/events/${this.state.search.split(" ").join("+")}`}/>
-        // }
+        if (this.state.redirect) {
+            return <Redirect to={`/events/${this.state.search.split(" ").join("+")}`}/>
+        }
         return (
             <div className="search-container">
                 <Form onSubmit={this.handleSubmit}>
@@ -78,4 +80,4 @@ class SearchField extends Component {
 }
 
 
-export default SearchField;
+export default withRouter(SearchField);
