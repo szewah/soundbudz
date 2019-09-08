@@ -34,8 +34,7 @@ class SearchField extends Component {
         axios.get(corsAnywhere + ticketmasterURL + term + "&apikey=" + searchKey)
         .then(res => {
             //response of search
-            // console.log(res.data._embedded.events);
-            // this.setState({ events: res.data._embedded.events });
+            // console.log(JSON.stringify(res.data._embedded.events));
             this.props.history.push({
                 pathname: '/events',
                 //turn object into a string in order to send data to the events page
