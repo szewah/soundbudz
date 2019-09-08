@@ -1,10 +1,11 @@
 import React from 'react';
+import EventsListing from '../../components/eventsListing/eventsListing';
 
 
-function AboutPage() {
+function Events() {
     return(
-        <h1>Hello</h1>
+        <EventsListing />
     )
 }
 
-export default AboutPage;
+export default Events;

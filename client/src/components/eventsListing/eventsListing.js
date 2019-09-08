@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 
-class Events extends Component {
+class EventsListing extends Component {
     state ={
 
     }
 
     render() {
-        const events_data = JSON.parse(this.props.location.state.events_data);
-        console.log(`These are the events: ${events_data}`);
+        //turn string into an object
+        // const events_data = JSON.parse(this.props.location.state.events_data);
+        // console.log(`These are the events: ${events_data}`);
+        return(
+            <h2>Another hello</h2>
+        )
     }
 }
+
+export default EventsListing;
