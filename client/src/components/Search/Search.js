@@ -9,8 +9,7 @@ import './style.css';
 class SearchField extends Component {
 
     state = {
-        search: "",
-        redirect: false,
+        search: ""
     };
 
 
@@ -33,12 +32,13 @@ class SearchField extends Component {
                 //axios get ticket master results 
         axios.get(corsAnywhere + ticketmasterURL + term + "&apikey=" + searchKey)
         .then(res => {
-            //response of search
-            // console.log(JSON.stringify(res.data._embedded.events));
+            // response of search
+            console.log(res.data._embedded.events[0]._embedded);
             this.props.history.push({
-                pathname: '/events',
+                pathname: "/events/",
                 //turn object into a string in order to send data to the events page
-                state: {events_data: JSON.stringify(res.data._embedded.events)}
+                state: {data: JSON.stringify(res.data._embedded.events)}
+                // state: {message: "hello, I'm a passed message"}
             })
         })
         .catch(err => console.log(err));
@@ -54,9 +54,6 @@ class SearchField extends Component {
 
 
     render(){
-        if (this.state.redirect) {
-            return <Redirect to={`/events/${this.state.search.split(" ").join("+")}`}/>
-        }
         return (
             <div className="search-container">
                 <Form onSubmit={this.handleSubmit}>

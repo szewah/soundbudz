@@ -1,26 +1,25 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 //turn string into an object
 
 
 class EventsListing extends Component {
-    state = {}
-
-    componentDidMount = () => {
-        const eventData = JSON.parse(this.props.location.state);
-        console.log(eventData);
-
+    
+    state = {
+        eventList: [],
+        isLoaded: false
     }
 
+
     render() {
-        // const events_data = JSON.parse(this.props.location.state.events_data);
-
+        const {match, location, history} = this.props;
         return(
-            <h2>Another hello</h2>
-
-            // console.log(`These are the events: ${events_data}`);
+            <div>
+                <h2>Another hello</h2>
+                {/* <div>{location.state.data}</div> */}
+            </div>
         )
     }
 }
 
-export default EventsListing;
+export default withRouter(EventsListing);
