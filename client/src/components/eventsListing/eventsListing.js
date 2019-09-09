@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect, withRouter} from 'react-router-dom';
-//turn string into an object
+import EventCard from '../eventCard/eventCard';
 
 
 class EventsListing extends Component {
@@ -17,6 +17,7 @@ class EventsListing extends Component {
             <div>
                 <h2>Another hello</h2>
                 {/* <div>{location.state.data}</div> */}
+                <EventCard />
             </div>
         )
     }
