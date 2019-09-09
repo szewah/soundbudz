@@ -1,0 +1,7 @@
+.container {
+    margin-top: 40px;
+    width: 80%;
+    background: red;
+    display: flex;
+    justify-content: center;
+}
