@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Redirect, withRouter} from 'react-router-dom';
 // import EventCard from '../eventCard/eventCard';
+import {Card, Button} from 'react-bootstrap';
 
 
 class EventsListing extends Component {
@@ -18,9 +19,22 @@ class EventsListing extends Component {
         return(
             <div>
                 <h2>Another hello</h2>
+
                 {event.map((events) => 
-                        <li key={events.id}>{events.name}</li>
-                    )}
+                
+                    <Card key={events.id} style={{ width: '28rem' }}>
+                        <Card.Img variant="top" src={events.images[4].url}/>
+                        <Card.Body>
+                            <Card.Title>{events.name}</Card.Title>
+                            <Card.Text>
+                                {events.info}
+                            </Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
+                
+                )}
+
             </div>
         )
     }
