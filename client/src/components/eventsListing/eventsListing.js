@@ -18,8 +18,9 @@ class EventsListing extends Component {
         return(
             <div>
                 <h2>Another hello</h2>
-                {event.map(events => <div>{events.name}</div>)}
-
+                {event.map((events) => 
+                        <li key={events.id}>{events.name}</li>
+                    )}
             </div>
         )
     }
