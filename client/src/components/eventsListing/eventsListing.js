@@ -27,7 +27,15 @@ class EventsListing extends Component {
                     <div className="eventCard">
                         <img src={events.images[4].url} alt="eventImage" className="cardImage"/>
                         <h4 className="cardTitle">{events.name}</h4>
-                        <p className="cardDetails">{events._embedded.venues[0].url}</p>
+                        <div className="eventDetails">
+                            <p className="eventDate">Date: {events.dates.start.localDate}</p>
+                            <p className="eventDate">Time: {events.dates.start.localTime}</p>
+                            <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
+                            <a href={events._embedded.venues[0].url}>
+                            See more
+                            </a>
+                        </div>
+                        
                     </div>
            
                  </div>
