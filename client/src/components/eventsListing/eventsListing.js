@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Redirect, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 // import EventCard from '../eventCard/eventCard';
 import {Card, Button} from 'react-bootstrap';
 
@@ -13,7 +13,7 @@ class EventsListing extends Component {
 
 
     render() {
-        const {match, location, history} = this.props;
+        const {location} = this.props;
         const event = JSON.parse(location.state.data);
         console.log("DEBUG" , event);
         return(
@@ -21,18 +21,15 @@ class EventsListing extends Component {
                 <h2>Another hello</h2>
 
                 {event.map((events) => 
-                
-                    <Card key={events.id} style={{ width: '28rem' }}>
-                        <Card.Img variant="top" src={events.images[4].url}/>
-                        <Card.Body>
-                            <Card.Title>{events.name}</Card.Title>
-                            <Card.Text>
-                                {events.info}
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                
+
+                <div className="container">
+                    <div className="eventCard" key={events.id} style={{ width: '38rem' }}>
+                        <img src={events.images[4].url} alt="" style={{ width: '38rem' }}/>
+                        <h4 className="cardTitle">{events.name}</h4>
+                        <p className="cardDetails">{events._embedded.venues[0].url}</p>
+                    </div>
+           
+                 </div>
                 )}
 
             </div>

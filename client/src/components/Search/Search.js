@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Redirect, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {Form, FormControl, Button}  from 'react-bootstrap';
 import './style.css';
 
@@ -20,7 +20,7 @@ class SearchField extends Component {
     };
 
 
-    apiCall = () =>{
+    apiCall = () => {
         //cross origin set up to allow for api search
         const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
         //ticket master api
