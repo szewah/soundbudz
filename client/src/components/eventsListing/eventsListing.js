@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 // import EventCard from '../eventCard/eventCard';
 import {Card, Button} from 'react-bootstrap';
+import './style.css';
 
 
 class EventsListing extends Component {
@@ -22,9 +23,9 @@ class EventsListing extends Component {
 
                 {event.map((events) => 
 
-                <div className="container">
-                    <div className="eventCard" key={events.id} style={{ width: '38rem' }}>
-                        <img src={events.images[4].url} alt="" style={{ width: '38rem' }}/>
+                <div className="container"  key={events.id} >
+                    <div className="eventCard">
+                        <img src={events.images[4].url} alt="eventImage" className="cardImage"/>
                         <h4 className="cardTitle">{events.name}</h4>
                         <p className="cardDetails">{events._embedded.venues[0].url}</p>
                     </div>
