@@ -33,12 +33,13 @@ class EventsListing extends Component {
                             <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
                             <div className="eventAction">
                                 <span>
+                                    <i class="fas fa-ticket-alt"></i>
                                     <a href={events._embedded.venues[0].url}>
                                     Buy Ticket
                                     </a>
                                 </span>
-                                <span>Join Group</span>
-                                <span>Getting There</span>
+                                <span><i class="fas fa-users"></i>Join Group</span>
+                                <span><i class="fas fa-directions"></i>Getting There</span>
                             </div>
 
                         </div>
