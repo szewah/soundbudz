@@ -1,7 +1,7 @@
 .container {
     width: 50%;
     margin: 10px auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(157, 54, 54, 0.2);
     transition: 0.3s;
 }
 
@@ -29,4 +29,13 @@
 
 .eventDetails p {
     margin-bottom: 5px !important;
+}
+
+.eventAction {
+    display: flex;
+    justify-content: space-around;
+}
+
+span {
+    padding-top: 30px;
 }

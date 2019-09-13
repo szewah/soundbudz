@@ -31,9 +31,16 @@ class EventsListing extends Component {
                             <p className="eventDate">Date: {events.dates.start.localDate}</p>
                             <p className="eventDate">Time: {events.dates.start.localTime}</p>
                             <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
-                            <a href={events._embedded.venues[0].url}>
-                            See more
-                            </a>
+                            <div className="eventAction">
+                                <span>
+                                    <a href={events._embedded.venues[0].url}>
+                                    Buy Ticket
+                                    </a>
+                                </span>
+                                <span>Join Group</span>
+                                <span>Getting There</span>
+                            </div>
+
                         </div>
                         
                     </div>
