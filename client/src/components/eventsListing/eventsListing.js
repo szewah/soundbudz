@@ -31,6 +31,8 @@ class EventsListing extends Component {
                             <p className="eventDate">Date: {events.dates.start.localDate}</p>
                             <p className="eventDate">Time: {events.dates.start.localTime}</p>
                             <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
+                            <p className="eventAddress">Address: {events._embedded.venues[0].city.name}</p>
+                            <p className="eventAddress2">Address2: {events._embedded.venues[0].address.line1}</p>
                             <div className="eventAction">
                                 <span>
                                     <i className="fas fa-ticket-alt"></i>
