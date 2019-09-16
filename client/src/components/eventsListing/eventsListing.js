@@ -17,12 +17,13 @@ class EventsListing extends Component {
         const {location} = this.props;
         const event = JSON.parse(location.state.data);
         const name = location.search;
-        const search = name.split().shift();
-        console.log(search);
+        const search = name.substring(1);
+        const searchTerm = search.charAt(0).toUpperCase() + search.slice(1);
+        console.log(searchTerm);
         console.log("DEBUG" , event);
         return(
             <div>
-                <h3>Search results for "{name}"</h3>
+                <h3>Search results for '{searchTerm}'</h3>
 
                 {event.map((events) => 
 
@@ -35,7 +36,7 @@ class EventsListing extends Component {
                             <p className="eventDate">Time: {events.dates.start.localTime}</p>
                             <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
                             <p className="eventAddress">Address: {events._embedded.venues[0].city.name}</p>
-                            <p className="eventAddress2">Address2: {events._embedded.venues[0].address.line1}</p>
+                            <p className="eventAddress2">Address 2: {events._embedded.venues[0].address.line1}</p>
                             <div className="eventAction">
                                 <span>
                                     <i className="fas fa-ticket-alt"></i>
