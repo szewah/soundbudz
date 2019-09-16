@@ -4,7 +4,9 @@ import EventsListing from '../../components/eventsListing/eventsListing';
 
 function Events() {
     return(
+        <div>
         <EventsListing />
+        </div>
     )
 }
 

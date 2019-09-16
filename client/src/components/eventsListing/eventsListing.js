@@ -16,17 +16,20 @@ class EventsListing extends Component {
     render() {
         const {location} = this.props;
         const event = JSON.parse(location.state.data);
+        const name = location.search;
+        const search = name.split().shift();
+        console.log(search);
         console.log("DEBUG" , event);
         return(
             <div>
-                <h2>Another hello</h2>
+                <h3>Search results for "{name}"</h3>
 
                 {event.map((events) => 
 
                 <div className="container"  key={events.id} >
                     <div className="eventCard">
                         <img src={events.images[4].url} alt="eventImage" className="cardImage"/>
-                        <h4 className="cardTitle">{events.name}</h4>
+                        <h5 className="cardTitle">{events.name}</h5>
                         <div className="eventDetails">
                             <p className="eventDate">Date: {events.dates.start.localDate}</p>
                             <p className="eventDate">Time: {events.dates.start.localTime}</p>
