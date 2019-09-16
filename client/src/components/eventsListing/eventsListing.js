@@ -18,6 +18,8 @@ class EventsListing extends Component {
         const event = JSON.parse(location.state.data);
         const name = location.search;
         const search = name.substring(1);
+        //uppercase the first character of the search variable and then add the rest of the 
+        //letters from search.
         const searchTerm = search.charAt(0).toUpperCase() + search.slice(1);
         console.log(searchTerm);
         console.log("DEBUG" , event);
@@ -39,9 +41,10 @@ class EventsListing extends Component {
                             <p className="eventAddress2">Address 2: {events._embedded.venues[0].address.line1}</p>
                             <div className="eventAction">
                                 <span>
-                                    <i className="fas fa-ticket-alt"></i>
                                     <a href={events._embedded.venues[0].url}>
-                                    Buy Ticket
+                                        <i className="fas fa-ticket-alt">
+                                        Buy Ticket
+                                        </i>
                                     </a>
                                 </span>
                                 <span><i className="fas fa-users"></i>Join Group</span>
