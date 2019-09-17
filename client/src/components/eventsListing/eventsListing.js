@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 // import EventCard from '../eventCard/eventCard';
 import {Card, Button, Nav} from 'react-bootstrap';
+import Moment from 'moment';
 import './style.css';
 
 
@@ -34,13 +35,21 @@ class EventsListing extends Component {
                         <img src={events.images[4].url} alt="eventImage" className="cardImage"/>
                         <h5 className="cardTitle">{events.name}</h5>
                         <div className="eventDetails">
-                            <p className="eventDate">Date: {events.dates.start.localDate}</p>
-                            <p className="eventDate">Time: {events.dates.start.localTime}</p>
-                                <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
-                                <p className="eventAddress">
-                                    Address:{" "}{events._embedded.venues[0].address.line1}{","} 
-                                             {" "}{events._embedded.venues[0].city.name}  
-                                </p>
+                            <p className="eventDate">Date: {Moment(
+                                events.dates.start.localDate
+                                ).format('LL')}
+                            </p>
+                            <p className="eventDate">Time: {Moment(
+                                events.dates.start.localTime
+                                ).format('hh:mm a')}
+                            </p>
+
+
+                            <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
+                            <p className="eventAddress">
+                                Address:{" "}{events._embedded.venues[0].address.line1}{","} 
+                                            {" "}{events._embedded.venues[0].city.name}  
+                            </p>
                             <div className="eventAction">   
                                 <Button href={events._embedded.venues[0].url} target="_blank">
                                     <i className="fas fa-ticket-alt"></i>
