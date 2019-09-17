@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 // import EventCard from '../eventCard/eventCard';
-import {Card, Button} from 'react-bootstrap';
+import {Card, Button, Nav} from 'react-bootstrap';
 import './style.css';
 
 
@@ -41,14 +41,11 @@ class EventsListing extends Component {
                             <p className="eventAddress2">Address 2: {events._embedded.venues[0].address.line1}</p>
                             <div className="eventAction">
 
-                                
-                                <span>
-                                    <a href={events._embedded.venues[0].url}>
-                                        <i className="fas fa-ticket-alt">
-                                         Buy Ticket
-                                        </i>
+                                <Button>
+                                    <a href="{events._embedded.venues[0].url}">
+                                    <i className="fas fa-ticket-alt">Buy Ticket</i>
                                     </a>
-                                </span>
+                                </Button>
                                 <Button><i className="fas fa-users"></i>Join Group</Button>
                                 <Button><i className="fas fa-directions"></i>Getting There</Button>
                             </div>
