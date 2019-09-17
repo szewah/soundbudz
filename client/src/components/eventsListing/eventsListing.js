@@ -40,15 +40,17 @@ class EventsListing extends Component {
                             <p className="eventAddress">Address: {events._embedded.venues[0].city.name}</p>
                             <p className="eventAddress2">Address 2: {events._embedded.venues[0].address.line1}</p>
                             <div className="eventAction">
+
+                                
                                 <span>
                                     <a href={events._embedded.venues[0].url}>
                                         <i className="fas fa-ticket-alt">
-                                        Buy Ticket
+                                         Buy Ticket
                                         </i>
                                     </a>
                                 </span>
-                                <span><i className="fas fa-users"></i>Join Group</span>
-                                <span><i className="fas fa-directions"></i>Getting There</span>
+                                <Button><i className="fas fa-users"></i>Join Group</Button>
+                                <Button><i className="fas fa-directions"></i>Getting There</Button>
                             </div>
 
                         </div>
