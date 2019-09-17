@@ -36,16 +36,18 @@ class EventsListing extends Component {
                         <div className="eventDetails">
                             <p className="eventDate">Date: {events.dates.start.localDate}</p>
                             <p className="eventDate">Time: {events.dates.start.localTime}</p>
-                            <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
-                            <p className="eventAddress">Address: {events._embedded.venues[0].city.name}</p>
-                            <p className="eventAddress2">Address 2: {events._embedded.venues[0].address.line1}</p>
+                                <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
+                                <p className="eventAddress">
+                                    Address:{" "}{events._embedded.venues[0].address.line1}{","} 
+                                             {" "}{events._embedded.venues[0].city.name}  
+                                </p>
                             <div className="eventAction">   
-                                <Button href={events._embedded.venues[0].url}>
+                                <Button href={events._embedded.venues[0].url} target="_blank">
                                     <i className="fas fa-ticket-alt"></i>
                                     Buy Ticket
                                 </Button>
                                 <Button><i className="fas fa-users"></i>Join Group</Button>
-                                <Button><i className="fas fa-directions"></i>Getting There</Button>
+                                {/* <Button><i className="fas fa-directions"></i>Getting There</Button> */}
                             </div>
 
                         </div>

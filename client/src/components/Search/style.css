@@ -4,6 +4,10 @@
     margin: auto;
 }
 
+.eventAction {
+    margin-top: 20px;
+}
+
 .btn-container {
     margin-top: 30px;
     display: flex;
