@@ -40,18 +40,18 @@ class EventsListing extends Component {
                                 ).format('LL')}
                             </p>
                             <p className="eventDate">Time: {Moment(
-                                events.dates.start.localTime
-                                ).format('hh:mm a')}
+                                events.dates.start.localTime, 'h:mm'
+                                ).format('h:mm A')}
                             </p>
 
 
                             <p className="eventVenue">Venue: {events._embedded.venues[0].name}</p>
                             <p className="eventAddress">
                                 Address:{" "}{events._embedded.venues[0].address.line1}{","} 
-                                            {" "}{events._embedded.venues[0].city.name}  
+                                            {" "}{events._embedded.venues[0].city.name}{"."}  
                             </p>
                             <div className="eventAction">   
-                                <Button href={events._embedded.venues[0].url} target="_blank">
+                                <Button href={events.url} target="_blank">
                                     <i className="fas fa-ticket-alt"></i>
                                     Buy Ticket
                                 </Button>

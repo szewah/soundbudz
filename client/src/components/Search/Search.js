@@ -36,7 +36,7 @@ class SearchField extends Component {
             console.log(res.data._embedded.events[0]._embedded);
             this.props.history.push({
                 pathname: "/events/",
-                search: '?' + `${this.state.search.split(" ").join("+")}`,
+                search: `?${this.state.search.split(" ").join("+")}`,
                 //turn object into a string in order to send data to the events page
                 state: {data: JSON.stringify(res.data._embedded.events)}
                 // state: {message: "hello, I'm a passed message"}
