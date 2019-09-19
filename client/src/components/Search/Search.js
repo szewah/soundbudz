@@ -66,7 +66,7 @@ class SearchField extends Component {
                             value={this.state.search} 
                             onChange={this.handleChange}
                         />
-                        <div className="btn-container">
+                        <div className="searchbtn-container">
                             <Button type="submit">Submit</Button>
                         </div>
                     </Form.Group>

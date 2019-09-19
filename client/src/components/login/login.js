@@ -20,7 +20,7 @@ class Login extends Component {
             password: this.state.password
         }
 
-        alert('A name was submitted: ' + this.state.email + this.state.password);
+        alert('A name was submitted: ' + this.state.email + " " + this.state.password);
         
     }
 
