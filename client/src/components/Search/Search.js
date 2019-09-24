@@ -24,7 +24,7 @@ class SearchField extends Component {
         //cross origin set up to allow for api search
         const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
         //ticket master api
-        const ticketmasterURL = "https://app.ticketmaster.com/discovery/v2/events/?keyword=";
+        const ticketmasterURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=";
         //api key
         const searchKey = process.env.REACT_APP_TM_KEY;
         //search term
