@@ -24,6 +24,9 @@ class Registration extends Component {
                     <Form.Group>
                         <Form.Control type="password" name="password" placeholder="Password "></Form.Control>
                     </Form.Group>
+                    <Form.Group>
+                        <Form.Control type="password" name="confirmPassword" placeholder="Confirm Password "></Form.Control>
+                    </Form.Group>
                     <div className="btn-container">
                         <Button type="submit">Submit</Button>
                     </div>
