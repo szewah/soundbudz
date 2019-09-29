@@ -6,6 +6,9 @@ class Registration extends Component {
     state = {
         name: '',
         surname: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
     }
 
     render() {
