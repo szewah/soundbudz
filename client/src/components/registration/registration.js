@@ -11,6 +11,10 @@ class Registration extends Component {
         confirmPassword: ''
     }
 
+    handleChange = () => {
+
+    }
+
     render() {
         return (
             <div className="login-email-container">
