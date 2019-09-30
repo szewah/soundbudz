@@ -7,7 +7,7 @@
         "api",
         "groups",
         "react",
-        "eventbrite"
+        "ticketmaster"
     ],
     "main": "app.js",
     "private": true,
