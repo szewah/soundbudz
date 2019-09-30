@@ -7,6 +7,7 @@ class Logout extends Component {
 
     logoutClick = (event) => {
         event.preventDefault();
+        alert("logged out!");
         localStorage.removeItem('token')
     }
 
