@@ -29,17 +29,16 @@ class SearchField extends Component {
         const searchKey = process.env.REACT_APP_TM_KEY;
         //search term
         const term = this.state.search.split(" ").join("+");
-                //axios get ticket master results 
+        //axios get ticket master results 
         axios.get(corsAnywhere + ticketmasterURL + term + "&apikey=" + searchKey)
         .then(res => {
-            // response of search
+            // results of the search
             console.log(res.data._embedded.events[0]._embedded);
             this.props.history.push({
                 pathname: "/events/",
                 search: `?${this.state.search.split(" ").join("+")}`,
                 //turn object into a string in order to send data to the events page
                 state: {data: JSON.stringify(res.data._embedded.events)}
-                // state: {message: "hello, I'm a passed message"}
             })
         })
         .catch(err => console.log(err));
