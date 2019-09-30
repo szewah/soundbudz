@@ -7,12 +7,15 @@ class Logout extends Component {
 
     logoutClick = (event) => {
         event.preventDefault();
-        localStorage.removeItem('token');
+        localStorage.removeItem('token')
     }
 
     render() {
-        return 
-        <Nav.Link href="" onClick={this.logoutClick}>Logout</Nav.Link>
+        return (
+        <Nav>
+            <Nav.Link href="/login" onClick={this.logoutClick}>Logout</Nav.Link>
+        </Nav>
+        )
     }
 }
 
