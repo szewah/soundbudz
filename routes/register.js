@@ -1,6 +1,6 @@
 //routes to the database to encrypt password and to register user
 const User = require('../models/user');
-const bcryptjs = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const keys = require('../config/key');
 
 
@@ -10,7 +10,17 @@ module.exports = function(app) {
         if (err) {
             console.log('An error occured');
         }
-        User.create
+        User.findOne({
+            where: {
+                email: req.body.email
+            }
+        }).then(user => {
+            if(user) {
+                res.json({email: "Email already exists"});
+            } else {
+
+            }
+        })
     })
 }
 
