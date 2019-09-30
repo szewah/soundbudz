@@ -1,7 +1,6 @@
 //routes to the database to encrypt password and to register user
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
-const keys = require('../config/key');
 
 
 module.exports = function(app) {
@@ -18,7 +17,19 @@ module.exports = function(app) {
             if(user) {
                 res.json({email: "Email already exists"});
             } else {
-
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(req.body.password, salt, (err, hash) => {
+                        if (err) throw err;
+                        User.create({
+                            firstName: req.body.registerName,
+                            lastName: req.body.registerSurname,
+                            email: req.body.registerEmail,
+                            password: hash
+                        })
+                        .then(user => res.json(user))
+                        .catch(err => console.log(err));
+                    })
+                })
             }
         })
     })

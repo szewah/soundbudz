@@ -4,9 +4,9 @@ import './style.css';
 
 class Registration extends Component {
     state = {
-        name: '',
-        surname: '',
-        email: '',
+        registerName: '',
+        registerSurname: '',
+        registerEmail: '',
         password: '',
         confirmPassword: ''
     }
@@ -20,16 +20,16 @@ class Registration extends Component {
             <div className="login-email-container">
                 <Form>
                     <Form.Group>
-                        <Form.Control type="text" name="name" value={this.state.name} placeholder="Name"></Form.Control>
+                        <Form.Control type="text" name="registerName" value={this.state.registerName} placeholder="Name"></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="text" name="surname" value={this.state.surname} placeholder="Surname"></Form.Control>
+                        <Form.Control type="text" name="registerSurname" value={this.state.registerSurname} placeholder="Surname"></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="email" name="email" value={this.state.email} placeholder="Email"></Form.Control>
+                        <Form.Control type="email" name="registerEmail" value={this.state.registerEmail} placeholder="Email"></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="password" name="password" value={this.state.password} placeholder="Password "></Form.Control>
+                        <Form.Control type="password" name="password" value={this.state.registerPassword} placeholder="Password "></Form.Control>
                     </Form.Group>
                     <Form.Group>
                         <Form.Control type="password" name="confirmPassword" value={this.state.confirmPassword} placeholder="Confirm Password "></Form.Control>
