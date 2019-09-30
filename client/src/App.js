@@ -5,7 +5,7 @@ import HomePage from './pages/homepage/homepage';
 import EventsPage from './pages/eventsPage/eventsPage';
 import Login from './pages/loginPage/loginPage'
 import Registration from './pages/registrationPage/registrationPage';
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 function App() {
   return (
