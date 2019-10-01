@@ -3,7 +3,6 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 
 
-
 module.exports = function(app) {
     /*POST registration page*/
     app.post('/registration', function(req, res, next) {
@@ -19,16 +18,19 @@ module.exports = function(app) {
                 res.json({email: "Email already exists"});
             } else {
                 bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(req.body.password, salt, (err, hash) => {
+                    bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
                         if (err) throw err;
                         User.create({
                             firstName: req.body.registerName,
                             lastName: req.body.registerSurname,
                             email: req.body.registerEmail,
-                            password: hash
+                            password: hashedPassword
                         })
-                        .then(user => res.json(user))
-                        .catch(err => console.log(err));
+                        .then(user => {
+                            console.log('user created');
+                            return done(null, user);
+                        })
+                        .catch(err => done(err));
                     })
                 })
             }
