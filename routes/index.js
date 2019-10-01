@@ -1,3 +1,4 @@
+//Export this file to app.js server side
 const registerAPI = require('./register');
 const loginAPI = require('./login');
 const path = require('path');
