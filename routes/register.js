@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 module.exports = function(app) {
     /*POST new user on registration page*/
     app.post('/registration', function(req, res, next) {
+        console.log(req.body);
         if (err) {
             console.log('An error occured');
         }
