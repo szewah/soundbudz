@@ -29,8 +29,7 @@ app.use(
 )
 
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+app.use('routes');
 
 app.listen(PORT, function() {
   console.log(`Listening on port http://localhost:${PORT}`);
