@@ -1,3 +1,4 @@
+/*The groups belonging to the User*/ 
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const UserGroup = sequelize.define("UserGroup", {

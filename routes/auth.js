@@ -1,11 +1,12 @@
-//Route to the database to encrypt password and to register user
+//serverside 
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const key = require('../config/key');
+const jwtConfig = require('../config/jwtConfig');
 
+//Route to the database to encrypt password and to register user
 router.post('/registration', (req, res) => {
     if(err) throw err;
     User.findOne({
@@ -27,7 +28,7 @@ router.post('/registration', (req, res) => {
                         email: req.body.registerEmail,
                         password: hashedPassword
                     })
-                    .then(user => res.json(user))
+                    .then(user => console.log(user))
                     .catch(err => console.log(err));
                 });
             });
@@ -35,9 +36,10 @@ router.post('/registration', (req, res) => {
     });
 });
 
+//Route to the database to compare encrypted password to user password
 router.post('/login', (req, res) => {
     if(err) throw errr;
-
+    console.log(req.body);
     User.findOne({
         where: {
             email: req.body.email
@@ -56,7 +58,8 @@ router.post('/login', (req, res) => {
                     firstName: user.firstName,
                     lastName: user.lastName
                 };
-                jwt.sign(payload, key.secretOrKey, {expiresIn: "2 days"}, (err, token) => {
+                jwt.sign(payload, jwtConfig.secretOrKey, {expiresIn: "2 days"}, (err, token) => {
+                    console.log(token);
                     res.json({
                         user: {
                             id: user.id,

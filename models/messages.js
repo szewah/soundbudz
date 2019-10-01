@@ -1,3 +1,4 @@
+/*Messages belonging to the User*/
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Messages = sequelize.define('Messages', {

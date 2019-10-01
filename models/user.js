@@ -1,4 +1,4 @@
-//User model
+/*User*/
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {

@@ -1,3 +1,4 @@
+/*Group created from event*/
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Group = sequelize.define('Group', {
