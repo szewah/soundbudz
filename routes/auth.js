@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const keys = require('../config/key');
+const key = require('../config/key');
 
 router.post('/registration', (req, res) => {
     if(err) throw err;
@@ -36,8 +36,48 @@ router.post('/registration', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+    if(err) throw errr;
 
-})
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then(user => {
+        if(!user) {
+            res.json({
+                emailNotFound: 'Email not found'
+            });
+        }
+        bcrypt.compare(req.body.password, user.password)
+        .then(matched => {
+            if(matched) {
+                const payload = {
+                    id: user.id,
+                    firstName: user.firstName,
+                    lastName: user.lastName
+                };
+                jwt.sign(payload, key.secretOrKey, {expiresIn: "2 days"}, (err, token) => {
+                    res.json({
+                        user: {
+                            id: user.id,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            email: user.email
+                        },
+                        success: true,
+                        token: 'Bearer ' + token
+                    });
+                });
+            } else {
+                return res.json({
+                    passwordIncorrect: 'The password is incorrect'
+                });
+            }
+        });
+    });
+});
+
+module.exports = router;
 
 
 
