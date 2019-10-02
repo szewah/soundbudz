@@ -12,7 +12,8 @@ class Registration extends Component {
         registerSurname: '',
         registerEmail: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        regSuccess: false
     }
 
     handleChange = (event) => {
@@ -21,16 +22,19 @@ class Registration extends Component {
         });
     };
 
-    handleSubmit = (event) => {
+    sendRegFormData = (event) => {
         event.preventDefault();
         axios.post('api/user/new', {
             firstName: this.state.registerName,
             lastName: this.state.registerSurname,
             email: this.state.registerEmail,
             password: this.state.password
-        })
-
-        this.emptyForm();
+        }).then((res) => {
+            if(res) {
+                this.setState({regSuccess: true});
+                this.emptyForm();
+            }
+        }).catch(err=> console.log(err));
     };
 
     emptyForm = () => {
@@ -44,7 +48,14 @@ class Registration extends Component {
     render() {
         return (
             <div className="login-email-container">
-                <Form onSubmit={this.handleSubmit}>
+            {this.state.regSuccess &&
+                <div className='alert alert-success alert-dismissible' role="alert">
+                  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <p> <i className='fa fa-check'> </i> Registration Successful </p>
+                  <p> Please <NavLink to='/login'>Login</NavLink> with your credentials</p>
+                </div>
+              }    
+                <Form onSubmit={this.sendRegFormData}>
                     <Form.Group>
                         <Form.Control 
                             type="text" 
