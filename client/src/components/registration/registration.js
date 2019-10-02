@@ -25,19 +25,23 @@ class Registration extends Component {
     //front end route to the server
     sendRegFormData = (event) => {
         event.preventDefault();
-        axios.post('/api/user/new', {
+        const newUser = {
             firstName: this.state.registerName,
             lastName: this.state.registerSurname,
             email: this.state.registerEmail,
             password: this.state.password
-        }).then((data) => {
-            console.log(data);
-            // if(data) {
-            //     this.setState({regSuccess: true});
-            //     this.emptyForm();
-            // }
-        })
-        .catch((err) => {console.log(err)});
+        }
+        console.log(newUser);
+        axios
+            .post('/api/newuser', newUser)
+            .then((data) => {
+                console.log(data);
+                if(data) {
+                    // this.setState({regSuccess: true});
+                    this.emptyForm();
+                }
+            })
+            .catch((err) => {console.log(err)});
     };
 
     emptyForm = () => {

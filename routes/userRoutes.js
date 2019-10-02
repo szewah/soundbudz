@@ -1,20 +1,21 @@
 const User = require('../models').User;
 const bcrypt = require('bcryptjs');
 var express = require('express');
-var userRouter = express.Router();
+var userRoute = express.Router();
 
-userRouter.post('/new', (req,res) => {
-    // User.findOne({
-    //     where: {
-    //         email: req.body.email
-    //     }
-    // }).then((result) => {
-    //     if (result) {
-    //         res.json({foundEmail: 'Email is already in use'})
-    //     } else {
-    //         bcrypt.genSalt(10, (err, salt)=> {
-    //             bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
-    //                 if(err) throw err;
+//Registering new user
+userRoute.post('/api/registration', (req,res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then((result) => {
+        if (result) {
+            res.json({foundEmail: 'Email is already in use'})
+        } else {
+            bcrypt.genSalt(10, (err, salt)=> {
+                bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
+                    if(err) throw err;
                     User.create({
                         firstName: req.body.registereName,
                         lastName: req.body.registerSurname,
@@ -25,10 +26,33 @@ userRouter.post('/new', (req,res) => {
                     }).catch(err => {
                         console.log(err.user)
                     })
-                // })
-            // })
-        // }
-    // })
-})
+                })
+            })
+        }
+    })
+});
 
-module.exports = userRouter;
+
+//Login
+userRoute.post('./api/login', (req,res) => {
+    var email = req.body.email;
+    var password = req.body.password;
+    User.findOne({
+        where:{
+            email: email
+        }
+    })
+    .then(user => {
+        if(!user) {
+            console.log('Wrong email')
+        } else if (!user.password) {
+            console.log('Wrongpassword')
+        } else {
+            console.log('Logged In')
+            }
+    })
+});
+
+
+
+module.exports = userRoute;
