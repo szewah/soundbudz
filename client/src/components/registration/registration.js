@@ -1,8 +1,10 @@
 //Form component for registration
+import axios from ('axios');
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
 import './style.css';
+
 
 class Registration extends Component {
     state = {
@@ -20,7 +22,12 @@ class Registration extends Component {
     };
 
     handleSubmit = (event) => {
-        alert(" I was hit");
+        event.preventDefault();
+        axios.post('api/user/new', {
+            firstName: this.state.registerName,
+            surnameName: this.state.registerSurname,
+        })
+
         this.emptyForm();
     };
 
