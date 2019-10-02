@@ -25,7 +25,9 @@ class Registration extends Component {
         event.preventDefault();
         axios.post('api/user/new', {
             firstName: this.state.registerName,
-            surnameName: this.state.registerSurname,
+            lastName: this.state.registerSurname,
+            email: this.state.registerEmail,
+            password: this.state.password
         })
 
         this.emptyForm();
