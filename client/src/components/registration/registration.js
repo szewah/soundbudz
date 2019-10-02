@@ -21,7 +21,16 @@ class Registration extends Component {
 
     handleSubmit = (event) => {
         alert(" I was hit");
+        this.emptyForm();
     };
+
+    emptyForm = () => {
+        document.getElementById('nameInput').value = ""
+        document.getElementById('surnameInput').value = ""
+        document.getElementById('emailInput').value = ""
+        document.getElementById('passwordInput').value = ""
+        document.getElementById('confirmPWInput').value = ""
+    }
 
     render() {
         return (
@@ -32,6 +41,7 @@ class Registration extends Component {
                             type="text" 
                             name="registerName" 
                             value={this.state.registerName} 
+                            id="nameInput"
                             placeholder="Name" 
                             onChange={this.handleChange}>
                         </Form.Control>
@@ -41,6 +51,7 @@ class Registration extends Component {
                             type="text" 
                             name="registerSurname" 
                             value={this.state.registerSurname} 
+                            id="surnameInput"
                             placeholder="Surname" 
                             onChange={this.handleChange}>
                         </Form.Control>
@@ -50,6 +61,7 @@ class Registration extends Component {
                             type="email" 
                             name="registerEmail" 
                             value={this.state.registerEmail} 
+                            id="emailInput"
                             placeholder="Email" 
                             onChange={this.handleChange}>
                         </Form.Control>
@@ -59,6 +71,7 @@ class Registration extends Component {
                             type="password" 
                             name="password" 
                             value={this.state.registerPassword} 
+                            id="passwordInput"
                             placeholder="Password" 
                             onChange={this.handleChange}>
                         </Form.Control>
@@ -68,6 +81,7 @@ class Registration extends Component {
                             type="password" 
                             name="confirmPassword" 
                             value={this.state.confirmPassword} 
+                            id="confirmPWInput"
                             placeholder="Confirm Password" 
                             onChange={this.handleChange}>
                         </Form.Control>
