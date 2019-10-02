@@ -1,5 +1,5 @@
 node_modules
 .env
-key.js
+jwtConfig.js
 
 
