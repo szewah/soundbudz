@@ -1,7 +1,8 @@
 /*The groups belonging to the User*/ 
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  const UserGroup = sequelize.define("UserGroup", {
+  const UserGroup = sequelize.define('UserGroup', {
     userID: {
       type: DataTypes.INTERGER,
       allowNull: false,
@@ -14,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTERGER,
       allowNull: false,
       references: {
-        model: "Group",
+        model: "GroupChat",
         key: "id"
       }
     }
