@@ -1,7 +1,7 @@
 //Form component for registration
-import axios from ('axios');
+import axios from 'axios';
 import React, {Component} from 'react';
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, Nav} from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
 import './style.css';
 
@@ -22,19 +22,22 @@ class Registration extends Component {
         });
     };
 
+    //front end route to the server
     sendRegFormData = (event) => {
         event.preventDefault();
-        axios.post('api/user/new', {
+        axios.post('/api/user/new', {
             firstName: this.state.registerName,
             lastName: this.state.registerSurname,
             email: this.state.registerEmail,
             password: this.state.password
-        }).then((res) => {
-            if(res) {
-                this.setState({regSuccess: true});
-                this.emptyForm();
-            }
-        }).catch(err=> console.log(err));
+        }).then((data) => {
+            console.log(data);
+            // if(data) {
+            //     this.setState({regSuccess: true});
+            //     this.emptyForm();
+            // }
+        })
+        .catch((err) => {console.log(err)});
     };
 
     emptyForm = () => {
@@ -52,7 +55,7 @@ class Registration extends Component {
                 <div className='alert alert-success alert-dismissible' role="alert">
                   <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <p> <i className='fa fa-check'> </i> Registration Successful </p>
-                  <p> Please <NavLink to='/login'>Login</NavLink> with your credentials</p>
+                  <p><Nav.Link to='/login'>Login</Nav.Link></p>
                 </div>
               }    
                 <Form onSubmit={this.sendRegFormData}>
