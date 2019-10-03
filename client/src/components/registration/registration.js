@@ -1,5 +1,5 @@
 //Form component for registration
-import axios from 'axios';
+import API from '../../utils/api'
 import React, {Component} from 'react';
 import {Form, Button, Nav} from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
@@ -32,16 +32,8 @@ class Registration extends Component {
             password: this.state.password
         }
         console.log(newUser);
-        axios
-            .post('/api/newuser', newUser)
-            .then((data) => {
-                console.log(data);
-                if(data) {
-                    // this.setState({regSuccess: true});
-                    this.emptyForm();
-                }
-            })
-            .catch((err) => {console.log(err)});
+        API.postNewUser(newUser);
+        this.emptyForm();
     };
 
     emptyForm = () => {
@@ -55,13 +47,6 @@ class Registration extends Component {
     render() {
         return (
             <div className="login-email-container">
-            {this.state.regSuccess &&
-                <div className='alert alert-success alert-dismissible' role="alert">
-                  <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <p> <i className='fa fa-check'> </i> Registration Successful </p>
-                  <p><Nav.Link to='/login'>Login</Nav.Link></p>
-                </div>
-              }    
                 <Form onSubmit={this.sendRegFormData}>
                     <Form.Group>
                         <Form.Control 

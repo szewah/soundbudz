@@ -3,8 +3,10 @@ import axios from "axios";
 
 export default {
 
-    postNewUser: function(newUser) {
-        return axios.post('/api/new/user', newUser);
+    postNewUser: async function(newUser) {
+        const data = await axios
+            .post('/api/new/user', newUser);
+        return console.log(data);
     },
 
     createNewGroup: function(newGroup) {
