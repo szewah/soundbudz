@@ -24,7 +24,7 @@ userRoute.post('/api/registration', (req,res) => {
                     }).then(user => {
                         res.json(user);
                     }).catch(err => {
-                        console.log(err.user)
+                        res.json(err.user)
                     })
                 })
             })
