@@ -30,7 +30,7 @@ class EventsListing extends Component {
 
                 {event.map((events) => 
 
-                <div className="eventContainer"  key={events.id} >
+                <div className="eventContainer"  key={events.id}>
                     <div className="eventCard">
                         <img src={events.images[4].url} alt="eventImage" className="cardImage"/>
                         <h5 className="cardTitle">{events.name}</h5>

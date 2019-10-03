@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Navbar from './components/navbar/Navbar';
 import HomePage from './pages/homepage/homepage';
 import EventsPage from './pages/eventsPage/eventsPage';

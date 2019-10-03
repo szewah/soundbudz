@@ -1,4 +1,4 @@
-const User = require('../models').User;
+const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 var express = require('express');
 var userRoute = express.Router();
@@ -20,9 +20,9 @@ userRoute.post('/api/registration', (req,res) => {
                         firstName: req.body.registereName,
                         lastName: req.body.registerSurname,
                         email: req.body.registerEmail,
-                        password: req.body.password
+                        password: hashedPassword
                     }).then(user => {
-                        console.log(user);
+                        res.json(user);
                     }).catch(err => {
                         console.log(err.user)
                     })
@@ -46,7 +46,7 @@ userRoute.post('./api/login', (req,res) => {
         if(!user) {
             console.log('Wrong email')
         } else if (!user.password) {
-            console.log('Wrongpassword')
+            console.log('Wrong password')
         } else {
             console.log('Logged In')
             }

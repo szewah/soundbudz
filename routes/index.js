@@ -1,4 +1,4 @@
-//Export this file to app.js server side
+// Export this file to app.js server side
 const userRoutes = require('./userRoutes');
 const path = require('path');
 const express = require('express');
