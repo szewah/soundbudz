@@ -7,7 +7,6 @@ const router = express.Router();
 //API routes
 router.use('/user', userRoutes);
 
-
 //If no API routes are hit, send the front of the react app
 router.use(function(req, res) {
     res.sendFile(path.join(__dirname, '../client/public/index.html'));

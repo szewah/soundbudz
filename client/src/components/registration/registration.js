@@ -31,18 +31,15 @@ class Registration extends Component {
             email: this.state.registerEmail,
             password: this.state.password
         }
-        console.log(newUser);
         API.postNewUser(newUser);
-        this.emptyForm();
+        this.setState({
+            registerName: '',
+            registerSurname:'',
+            registerEmail: '',
+            password: '',
+            confirmPassword: ''
+        })
     };
-
-    emptyForm = () => {
-        document.getElementById('nameInput').value = ""
-        document.getElementById('surnameInput').value = ""
-        document.getElementById('emailInput').value = ""
-        document.getElementById('passwordInput').value = ""
-        document.getElementById('confirmPWInput').value = ""
-    }
 
     render() {
         return (

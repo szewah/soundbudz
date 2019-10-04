@@ -1,32 +1,27 @@
-const User = require('../models/user');
-const bcrypt = require('bcryptjs');
+var db = require('../models/');
 var express = require('express');
-var userRoute = express.Router();
+var route = express.Router();
 
 //Registering new user
-userRoute.post('/api/registration', (req,res) => {
-    User.findOne({
+route.post('/new', (req,res) => {
+    db.User.findOne({
         where: {
             email: req.body.email
         }
     }).then((result) => {
         if (result) {
-            res.json({foundEmail: 'Email is already in use'})
+            console.log('Email is already in use');
         } else {
-            bcrypt.genSalt(10, (err, salt)=> {
-                bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
-                    if(err) throw err;
-                    User.create({
-                        firstName: req.body.registereName,
-                        lastName: req.body.registerSurname,
-                        email: req.body.registerEmail,
-                        password: hashedPassword
-                    }).then(user => {
-                        res.json(user);
-                    }).catch(err => {
-                        res.json(err.user)
-                    })
-                })
+            db.User.create({
+                firstName: req.body.registerName,
+                lastName: req.body.registerSurname,
+                email: req.body.registerEmail,
+                password: hashedPassword
+            }).then(user => {
+                console.log('This is the server side response');
+                res.json(user);
+            }).catch(err => {
+                res.json(err)
             })
         }
     })
@@ -34,12 +29,10 @@ userRoute.post('/api/registration', (req,res) => {
 
 
 //Login
-userRoute.post('./api/login', (req,res) => {
-    var email = req.body.email;
-    var password = req.body.password;
-    User.findOne({
+route.post('/login', (req,res) => {
+    db.User.findOne({
         where:{
-            email: email
+            email: req.body.email
         }
     })
     .then(user => {
@@ -55,4 +48,4 @@ userRoute.post('./api/login', (req,res) => {
 
 
 
-module.exports = userRoute;
+module.exports = route;

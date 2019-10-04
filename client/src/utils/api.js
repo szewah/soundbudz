@@ -5,8 +5,8 @@ export default {
 
     postNewUser: async function(newUser) {
         const data = await axios
-            .post('/api/new/user', newUser);
-        return console.log(data);
+            .post('/new/user', newUser);
+        return console.log('This is the client side response: ', data);
     },
 
     createNewGroup: function(newGroup) {
