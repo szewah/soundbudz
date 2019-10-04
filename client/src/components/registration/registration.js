@@ -13,7 +13,18 @@ class Registration extends Component {
         registerEmail: '',
         password: '',
         confirmPassword: '',
-        regSuccess: false
+        regSuccess: false,
+        apiResponse: ''
+    }
+
+    apiCall() {
+        fetch("http://localhost:3001/testAPI")
+        .then(res => res.text())
+        .then(res => this.setState({ apiResponse: res }));
+    }
+
+    componentDidMount(){
+        this.apiCall();
     }
 
     handleChange = (event) => {
@@ -44,6 +55,7 @@ class Registration extends Component {
     render() {
         return (
             <div className="login-email-container">
+                <p className='apiTest'>This is testing the response: {this.state.apiResponse}</p>
                 <Form onSubmit={this.sendRegFormData}>
                     <Form.Group>
                         <Form.Control 

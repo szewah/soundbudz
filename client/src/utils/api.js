@@ -10,15 +10,15 @@ export default {
     },
 
     createNewGroup: function(newGroup) {
-        return axios.post('/api/new/group', newGroup)
+        return axios.post('/new/group', newGroup)
     },
 
     geUser: function(id){
-        return axios.get('/api/user' + id)
+        return axios.get('/user' + id)
     },
 
     getGroup: function(id) {
-        return axios.get('/api/groups'+ id)
+        return axios.get('/groups'+ id)
     } 
 };
 

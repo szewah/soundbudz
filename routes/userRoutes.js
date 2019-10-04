@@ -4,6 +4,7 @@ var route = express.Router();
 
 //Registering new user
 route.post('/new', (req,res) => {
+    res.send(req.body)
     db.User.findOne({
         where: {
             email: req.body.email
@@ -16,10 +17,9 @@ route.post('/new', (req,res) => {
                 firstName: req.body.registerName,
                 lastName: req.body.registerSurname,
                 email: req.body.registerEmail,
-                password: hashedPassword
+                password: req.body.password
             }).then(user => {
-                console.log('This is the server side response');
-                res.json(user);
+                console.log(user);
             }).catch(err => {
                 res.json(err)
             })
