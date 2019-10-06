@@ -14,13 +14,14 @@ class Registration extends Component {
         password: '',
         confirmPassword: '',
         regSuccess: false,
-        apiResponse: ""
+        apiResponse: []
     }
 
     apiCall() {
         axios.get("/user/all")
         .then((response) => {
-            var response1 = response.data[0].firstName;
+            // var response1 = response.data[1].firstName;
+            var response1 = response.data;
             console.log(response1);
             this.setState({apiResponse: response1})
         })    
@@ -57,11 +58,18 @@ class Registration extends Component {
     };
 
     render() {
+
+        const items = this.state.apiResponse.map((item, key) => {
+            return <li key={item.id}>
+                Id: {item.id} 
+                Name: {item.firstName} {item.lastName} 
+                Email: {item.email} 
+                Password: {item.password}</li>
+        })
         return (
             <div className="login-email-container">
-                <p className='apiTest'>This is testing the response: {this.state.apiResponse}</p>
-
-
+                <p className='apiTest'>This is testing the response: </p>
+                <ul>{items}</ul>
                 <Form onSubmit={this.sendRegFormData}>
                     <Form.Group>
                         <Form.Control 
