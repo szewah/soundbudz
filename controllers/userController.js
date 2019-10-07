@@ -14,18 +14,6 @@ module.exports = {
             res.json(dbModel)
         })
         .catch((err) => res.status(422).json(err));
-    },
-    create: function(req, res) {
-        User.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: req.body.password
-        })
-        .then(newUser=> {
-            res.json(newUser)
-        })
-        .catch((err) => res.status(422).json(err))
     }
 };
 
