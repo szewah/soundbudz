@@ -1,7 +1,23 @@
 //passport-jwt is middleware for getting and verifying JWTs
-const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
-const User = require('../models').User;
-const opts = {}  
+var JwtStrategy = require('passport-jwt').Strategy;
+var ExtractJwt = require('passport-jwt').ExtractJwt;
+var User = require('../models').User;
+var opts = {}  
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = require('./jwtSecret');
+
+
+passport.new(new JwtStrategy(opts, (jwt_payload, done) => {
+    User.findByPk(jwt_payload.id)
+    .then(user => {
+        if(user) {
+            return done(null, user)
+        }
+        else {
+            return done(null, false);
+        }
+    })
+    .catch(err => console.error(err))
+}));
+
+module.exports = passport;
