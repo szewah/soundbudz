@@ -3,7 +3,9 @@ var express = require('express');
 var router = express.Router();
 var userController = require('../controllers/userController');
 var bcrypt = require('bcryptjs');
-var jwt = require('jsonwebtoken');
+var jwToken = require('jsonwebtoken');
+var keys = require('../config/jwtSecret');
+
 
 
 //Registering new user
@@ -38,9 +40,22 @@ router.post('/login', (req, res) => {
     db.User.findOne({where: {email}})
     .then(user => {
         if(!user) {
-            return res.status(404).json({emailNotFound: "Email was not found"});
+            return res.status(404).json({message: "Email was not found"});
         }
-        bcrypt.compare(password, user.password, (err, res))
+        bcrypt.compare(password, user.password)
+        .then(isMatch => {
+            if(isMatch) {
+                var payLoad = {
+                    id: user.id,
+                    name: user.firstName
+                };
+                jwToken.sign(payLoad, keys.secretOrKey, {expiresIn: '1h'})
+                .then((err,token) => {
+                    if (err) res.status(500)
+                    .json({message: "Error signing token", raw: err})
+                })
+            }
+        })
     })
 })
 

@@ -8,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const cors = require("cors");
 const routes = require('./routes');
+const passport = require('passport');
 
 app.use(logger('dev'));
 app.use(cors());
@@ -32,6 +33,9 @@ if (process.env.NODE_ENV === "production") {
 //   })
 // )
 
+//initializes the passport configuration
+app.use(passport.initialize());
+//registers our authentication routes with Express.
 app.use(routes);
 
 app.listen(PORT, function() {
