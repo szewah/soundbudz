@@ -33,7 +33,15 @@ router.post('/new', (req, res) => {
 
 //Login
 router.post('/login', (req, res) => {
-    
+    var email = req.body.email;
+    var password = req.body.password;
+    db.User.findOne({where: {email}})
+    .then(user => {
+        if(!user) {
+            return res.status(404).json({emailNotFound: "Email was not found"});
+        }
+        bcrypt.compare(password, user.password, (err, res))
+    })
 })
 
 

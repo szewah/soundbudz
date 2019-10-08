@@ -7,17 +7,18 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = require('./jwtSecret');
 
 
-passport.new(new JwtStrategy(opts, (jwt_payload, done) => {
-    User.findByPk(jwt_payload.id)
-    .then(user => {
-        if(user) {
-            return done(null, user)
-        }
-        else {
-            return done(null, false);
-        }
-    })
-    .catch(err => console.error(err))
-}));
-
-module.exports = passport;
+module.exports = passport => {
+    passport.use(
+        new JwtStrategy(opts, (jwt_payload, done) => {
+            User.findByPk(jwt_payload.id)
+            .then(user => {
+                if(user) {
+                    return done(null, user)
+                }
+                else {
+                    return done(null, false);
+                }
+            }).catch(err => console.error(err))
+        })
+    );
+};
