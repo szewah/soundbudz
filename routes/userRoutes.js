@@ -52,8 +52,14 @@ router.post('/login', (req, res) => {
                 jwToken.sign(payLoad, keys.secretOrKey, {expiresIn: '1h'})
                 .then((err,token) => {
                     if (err) res.status(500)
-                    .json({message: "Error signing token", raw: err})
-                })
+                    .json({message: "Error signing token", raw: err});
+                    res.json({
+                        success: true,
+                        token: `Bearer ${token}`
+                    })
+                });
+            } else {
+                res.status(400).json({message: "Password isn't found"})
             }
         })
     })
