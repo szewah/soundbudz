@@ -1,8 +1,5 @@
-const createError = require('http-errors');
 const bodyParser = require("body-parser");
 const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -12,7 +9,7 @@ const passport = require('passport');
 
 app.use(logger('dev'));
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -35,6 +32,7 @@ if (process.env.NODE_ENV === "production") {
 
 //initializes the passport configuration
 app.use(passport.initialize());
+require("./config/passport_jwt")(passport);
 //registers our authentication routes with Express.
 app.use(routes);
 

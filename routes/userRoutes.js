@@ -44,13 +44,16 @@ router.post('/login', (req, res) => {
         }
         bcrypt.compare(password, user.password)
         .then(isMatch => {
+            console.log("Testing isMatch " + isMatch);
             if(isMatch) {
+                console.log(user.firstName)
                 var payLoad = {
                     id: user.id,
                     name: user.firstName
                 };
-                jwToken.sign(payLoad, keys.secretOrKey, {expiresIn: '1h'})
-                .then((err,token) => {
+                console.log("Testing payload " + payLoad.name);
+                jwToken.sign(payLoad, keys.secretOrKey, {expiresIn: '1h'},
+                (err,token) => {
                     if (err) res.status(500)
                     .json({message: "Error signing token", raw: err});
                     res.json({
@@ -61,9 +64,9 @@ router.post('/login', (req, res) => {
             } else {
                 res.status(400).json({message: "Password isn't found"})
             }
-        })
-    })
-})
+        });
+    });
+});
 
 
 // Find all users

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './style.css';
+import axios from 'axios';
 
 class Login extends Component {
     state = {
@@ -14,14 +15,14 @@ class Login extends Component {
 
     handleSubmit = (event) =>{
         event.preventDefault();
-        const User = {
+        const loginUser = {
             email: this.state.email,
             password: this.state.password
         }
-
-        alert('A name was submitted: ' + this.state.email + " " + this.state.password);
-        
-    }
+        console.log("This is the front end log " + loginUser.password)
+        axios.post('/user/login', loginUser);
+        this.setState({email: '', password: ''})
+    };
 
     render() {
         return (
