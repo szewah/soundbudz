@@ -6,12 +6,14 @@ const PORT = process.env.PORT || 3001;
 const cors = require("cors");
 const routes = require('./routes');
 const passport = require('passport');
+const helmet = requre('helmet');
 
 app.use(logger('dev'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(helmet());
 
 
 // Serve up static assets (usually on heroku)
