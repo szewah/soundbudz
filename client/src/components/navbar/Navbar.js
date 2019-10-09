@@ -6,6 +6,7 @@ import '../navbar/style.css'
 
 class Navigation extends Component {
     state = {
+        isAuthenticated: false
     }
 
     render() {
@@ -20,7 +21,7 @@ class Navigation extends Component {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-sm-2">
+                    <Nav className="ml-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/registration">Registration</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>
