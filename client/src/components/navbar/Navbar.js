@@ -22,7 +22,7 @@ class Navigation extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
+                        {/* <Nav.Link href="/">Home</Nav.Link> */}
                         <Nav.Link href="/registration">Registration</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>
                     </Nav>

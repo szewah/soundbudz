@@ -6,7 +6,7 @@ function RegistrationPage() {
         <div>
             <Registration/>
             <div className="container">
-                <p style={{marginTop:"20px"}}>Already a member? 
+                <p style={{marginTop:"20px", textAlign: "center"}}>Already a member? 
                     <a href="/login"> Login here</a>
                 </p>
             </div>

@@ -4,3 +4,7 @@
     margin: auto;
     padding-top: 150px;
 }
+
+.btn-container {
+    margin-top: 40px !important;
+}
