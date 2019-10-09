@@ -7,7 +7,6 @@ var jwToken = require('jsonwebtoken');
 var keys = require('../config/jwtSecret');
 
 
-
 //Registering new user
 router.post('/new', (req, res) => {
     db.User.findOne({where:{email:req.body.email}})

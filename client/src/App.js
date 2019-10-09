@@ -4,18 +4,25 @@ import HomePage from './pages/homepage/homepage';
 import EventsPage from './pages/eventsPage/eventsPage';
 import Login from './pages/loginPage/loginPage'
 import Registration from './pages/registrationPage/registrationPage';
+import LandPage from './pages/landPage/landPage';
+import PrivateRoute from './components/privateRoute/privateRoute';
+
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
+      <Navbar/>
       <Router>
-        <Navbar/>
-        <Route exact path = "/" component={HomePage} />
-        <Route exact path ="/events" component={EventsPage} />
-        <Route exact path ="/registration" component={Registration}/>
-        <Route exact path ="/login" component={Login}/>
+        <Switch>
+          <Route exact path = "/" component={HomePage} />
+          <Route exact path ="/events" component={EventsPage} />
+          <Route exact path ="/registration" component={Registration}/>
+          <Route exact path ="/login" component={Login}/>
+          {/* <PrivateRoute exact path="/dashboard" component={LandPage}/> */}
+        </Switch>
       </Router>
+
     </div>
   );
 }
