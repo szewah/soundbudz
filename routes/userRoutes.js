@@ -45,7 +45,6 @@ router.post('/login', (req, res) => {
         .then(isMatch => {
             console.log("Testing isMatch " + isMatch);
             if(isMatch) {
-                console.log(user.firstName)
                 var payLoad = {
                     id: user.id,
                     name: user.firstName
@@ -53,6 +52,7 @@ router.post('/login', (req, res) => {
                 console.log("Testing payload " + payLoad.name);
                 jwToken.sign(payLoad, keys.secretOrKey, {expiresIn: '1h'},
                 (err,token) => {
+                    console.log("token is " + token);
                     if (err) res.status(500)
                     .json({message: "Error signing token", raw: err});
                     res.json({

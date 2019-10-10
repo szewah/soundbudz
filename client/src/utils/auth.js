@@ -4,5 +4,8 @@ import setAuthToken from '../utils/setAuthToken';
 
 
 
+const auth = () => {
 
+}
 
+export default auth;

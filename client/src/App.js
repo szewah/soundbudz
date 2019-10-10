@@ -20,8 +20,7 @@ function App() {
             <Route exact path ="/events" component={EventsPage} />
             <Route exact path ="/registration" component={Registration}/>
             <Route exact path ="/login" component={Login}/>
-            <Route exact path ='/landingPage' component={landPage} />
-            <PrivateRoute exact path="/dashboard" component={LandPage}/>
+            {/* <PrivateRoute exact path="/dashboard" component={LandPage}/> */}
           </Switch>
       </div>
     </Router>
