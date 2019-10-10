@@ -1,13 +1,25 @@
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './style.css';
+import auth from '../../utils/auth';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import 
 
 class Login extends Component {
     state = {
         email: '',
         password: ''
     } 
+
+    componentDidMount() {
+        //If the user is authenticated already and goes to the login page, redirect the user to the landing page
+        console.log(this.props)
+        if(auth.login) {
+            this.props.history.push('/landPage');
+        }
+
+    }
 
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
@@ -43,4 +55,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

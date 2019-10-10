@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 // import EventCard from '../eventCard/eventCard';
-import {Card, Button, Nav} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import Moment from 'moment';
 import './style.css';
 
@@ -16,7 +16,7 @@ class EventsListing extends Component {
 
     render() {
         const {location} = this.props;
-        const event = JSON.parse(location.state.data);
+        const event = JSON.parse(location.state.data.slice(0,10));
         const name = location.search;
         const search = name.substring(1);
         //uppercase the first character of the search variable and then add the rest of the 
