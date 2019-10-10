@@ -38,7 +38,7 @@ require("./config/passport_jwt")(passport);
 //registers our authentication routes with Express.
 app.use(routes);
 
-app.listen(PORT, function() {
+app.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${PORT}`);
 })
 
