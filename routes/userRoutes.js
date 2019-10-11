@@ -1,3 +1,4 @@
+//This is where the json web token is created
 var db = require('../models/');
 var express = require('express');
 var router = express.Router();
@@ -31,7 +32,6 @@ router.post('/new', (req, res) => {
     })
 })
 
-
 //Login
 router.post('/login', (req, res) => {
     var email = req.body.email;
@@ -50,11 +50,11 @@ router.post('/login', (req, res) => {
                     name: user.firstName
                 };
                 console.log("Testing payload " + payLoad.name);
+                //tokem creation
                 jwToken.sign(payLoad, keys.secretOrKey, {expiresIn: '1h'},
                 (err,token) => {
                     console.log("token is " + token);
-                    if (err) res.status(500)
-                    .json({message: "Error signing token", raw: err});
+                    if (err) res.status(500).json({message: "Error signing token", raw: err});
                     res.json({
                         success: true,
                         token: `Bearer ${token}`
@@ -68,7 +68,40 @@ router.post('/login', (req, res) => {
 });
 
 
+// router.get('/landingPage', verifyToken, (req, res) => {
+//     jwt.verify(req.token, keys.secretOrKey, (error, authData) => {
+//         if(error) {
+//             res.sendStatus(403);
+//         } else {
+//             res.json({
+//                 message: "Post created",
+//                 authData,
+//             })
+//         }
+//     })
+// })
+
+//vertify token
+// function verifyToken(req, res, next) {
+//     //get the auth header value
+//     var bearerHeader = req.headers["Authorization"];
+//     //check if bearer is undefined
+//     if (typeof bearerHeader !== undefined) {
+//         var bearer = bearerHeader.split(' ');
+//         var bearerToken = bearer[1];
+//         //set the token
+//         req.token = bearerToken;
+//         //call next middlewear
+//         next();
+//     } else {
+//         //forbidden
+//         res.sendStatus(403);
+//     }
+
+// }
+
 // Find all users
 router.get('/all', userController.findAll);
+
 
 module.exports = router;

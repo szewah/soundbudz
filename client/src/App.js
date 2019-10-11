@@ -6,13 +6,14 @@ import Login from './pages/loginPage/loginPage'
 import Registration from './pages/registrationPage/registrationPage';
 import LandPage from './pages/landPage/landPage';
 import PrivateRoute from './components/privateRoute/privateRoute';
+import AuthenticatedRoute from './utils/auth';
 
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         <Navbar/>
           <Switch>
@@ -20,10 +21,12 @@ function App() {
             <Route exact path ="/events" component={EventsPage} />
             <Route exact path ="/registration" component={Registration}/>
             <Route exact path ="/login" component={Login}/>
-            {/* <PrivateRoute exact path="/dashboard" component={LandPage}/> */}
+            <AuthenticatedRoute>
+              <Route exact path ="/landPage" component={LandPage}/>
+            </AuthenticatedRoute>
           </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

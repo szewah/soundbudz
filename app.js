@@ -2,7 +2,7 @@ const bodyParser = require("body-parser");
 const express = require('express');
 const logger = require('morgan');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 const cors = require("cors");
 const routes = require('./routes');
 const passport = require('passport');
@@ -37,6 +37,8 @@ app.use(passport.initialize());
 require("./config/passport_jwt")(passport);
 //registers our authentication routes with Express.
 app.use(routes);
+
+
 
 app.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${PORT}`);

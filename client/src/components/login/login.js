@@ -4,6 +4,7 @@ import './style.css';
 import auth from '../../utils/auth';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import decode from 'jwt-decode';
 
 
 class Login extends Component {
@@ -11,15 +12,6 @@ class Login extends Component {
         email: '',
         password: ''
     } 
-
-    componentDidMount() {
-        //If the user is authenticated already and goes to the login page, redirect the user to the landing page
-        console.log(this.props)
-        if(auth.login) {
-            this.props.history.push('/landPage');
-        }
-
-    }
 
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
@@ -32,7 +24,13 @@ class Login extends Component {
             password: this.state.password
         }
         console.log("This is the front end log " + loginUser.password)
-        axios.post('/user/login', loginUser);
+        axios
+        .post('/user/login', loginUser)
+        .then(res => {
+            console.log(res.data);
+            localStorage.setItem('cool-jwt', res.data.token)
+            this.props.history.push('/landPage');
+        })
         this.setState({email: '', password: ''})
     };
 
