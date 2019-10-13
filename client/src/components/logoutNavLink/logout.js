@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {Form, Button, Container, Nav} from 'react-bootstrap';
-import {Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import './style.css';
 
-class Logout extends Component {
+class LogoutNavLink extends Component {
 
     logoutClick = (event) => {
         event.preventDefault();
         alert("logged out!");
-        localStorage.removeItem('token')
+        localStorage.clear()
+        this.props.history.push('/login');
     }
 
     render() {
@@ -20,4 +21,4 @@ class Logout extends Component {
     }
 }
 
-export default Logout;
+export default withRouter(LogoutNavLink);
