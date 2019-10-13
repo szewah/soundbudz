@@ -9,7 +9,7 @@ const passport = require('passport');
 const helmet = require('helmet');
 
 app.use(logger('dev'));
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -22,15 +22,15 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //Set up cors
-// app.use(
-//   cors({
-//     origin: "*",
-//     allowedHeaders: "Authorization",
-//     preflightContinue: false,
-//     credentials: true,
-//     optionSuccessStatus: 200
-//   })
-// )
+app.use(
+  cors({
+    origin: "*",
+    allowedHeaders: "Authorization",
+    preflightContinue: false,
+    credentials: true,
+    optionSuccessStatus: 200
+  })
+)
 
 //initializes the passport configuration
 app.use(passport.initialize());

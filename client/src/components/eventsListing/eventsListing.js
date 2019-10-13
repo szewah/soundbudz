@@ -16,19 +16,20 @@ class EventsListing extends Component {
 
     render() {
         const {location} = this.props;
-        const event = JSON.parse(location.state.data.slice(0,10));
+        const event = JSON.parse(location.state.data);
+        var eventList = event.slice(0,10);
         const name = location.search;
         const search = name.substring(1);
         //uppercase the first character of the search variable and then add the rest of the 
         //letters from search.
         const searchTerm = search.charAt(0).toUpperCase() + search.slice(1);
         console.log(searchTerm);
-        console.log("DEBUG" , event);
+        console.log("DEBUG" , eventList);
         return(
             <div>
                 <h3>Search results for '{searchTerm}'</h3>
 
-                {event.map((events) => 
+                {eventList.map((events) => 
 
                 <div className="eventContainer"  key={events.id}>
                     <div className="eventCard">

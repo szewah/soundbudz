@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Form, Button, Container, Nav} from 'react-bootstrap';
-import {withRouter} from 'react-router-dom';
+import {Nav} from 'react-bootstrap';
+import {withRouter, Link} from 'react-router-dom';
 import './style.css';
 
 class LogoutNavLink extends Component {
@@ -15,7 +15,7 @@ class LogoutNavLink extends Component {
     render() {
         return (
         <Nav>
-            <Nav.Link href="/login" onClick={this.logoutClick}>Logout</Nav.Link>
+            <Link to="/login" onClick={this.logoutClick}>Logout</Link>
         </Nav>
         )
     }
