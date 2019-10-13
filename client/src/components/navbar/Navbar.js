@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Logo from '../../logo/blacklogo.png';
 import '../navbar/style.css'
 
@@ -9,8 +9,6 @@ class Navigation extends Component {
     }
 
     render() {
-        console.log(this.props.auth);
-        // const {isAuthenticated} = this.props.auth;
         return (
             <Navbar bg="light" expand="sm">
                 <Navbar.Brand href="/">
@@ -23,8 +21,8 @@ class Navigation extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                      <Nav className="ml-auto">
-                        <Nav.Link href="/registration">Registration</Nav.Link>
-                        <Nav.Link href="/login">Login</Nav.Link>
+                        <Link to="/registration">Registration</Link>
+                        <Link to="/login">Login</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

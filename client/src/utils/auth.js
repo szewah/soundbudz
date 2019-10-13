@@ -1,8 +1,8 @@
+//authorization route to see logged in pages
 import axios from 'axios';
 import React, {Component} from 'react';
 import getJwt from './getJwt';
 import {withRouter} from 'react-router-dom';
-
 
 class Authentication extends Component {
     state = {
@@ -11,10 +11,11 @@ class Authentication extends Component {
 
     componentDidMount() {
         var jwt = getJwt();
+        console.log("this is the token " + jwt)
         if (!jwt) {
             this.props.history.push('/login');
         }
-        axios.get('/getUser', {headers: {Authorization: `Bearer ${jwt}`}})
+        axios.get('/getUser', {headers: {Authorization: jwt}})
         .then(res => {
             this.setState({user: res.data})
         })

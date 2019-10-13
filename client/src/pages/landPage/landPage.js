@@ -1,9 +1,17 @@
 import React from 'react';
-import LandingPage from '../../components/landingPage/landingPage';
+import Button from '../../components/logoutBtn/logoutBtn';
 
 
-const landPage = () => {
-    return <LandingPage />
+const landingPage = () => {
+    return  (
+    <div>
+        <div className="container">
+            <p>Hello, this is a Private Landing Page</p>
+            <Button />
+        </div>
+        
+    </div>
+    )
 };
 
-export default landPage;
+export default landingPage;

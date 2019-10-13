@@ -5,7 +5,6 @@ import EventsPage from './pages/eventsPage/eventsPage';
 import Login from './pages/loginPage/loginPage'
 import Registration from './pages/registrationPage/registrationPage';
 import LandPage from './pages/landPage/landPage';
-import PrivateRoute from './components/privateRoute/privateRoute';
 import AuthenticatedRoute from './utils/auth';
 
 import { BrowserRouter, Route, Switch} from "react-router-dom";

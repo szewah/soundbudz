@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './style.css';
-import auth from '../../utils/auth';
+// import auth from '../../utils/auth';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 
 class Login extends Component {
@@ -27,8 +27,10 @@ class Login extends Component {
         axios
         .post('/user/login', loginUser)
         .then(res => {
-            console.log(res.data);
+            console.log(res);
             localStorage.setItem('cool-jwt', res.data.token)
+            let decoded = jwt_decode(res.data.token);
+            console.log(decoded);
             this.props.history.push('/landPage');
         })
         this.setState({email: '', password: ''})
