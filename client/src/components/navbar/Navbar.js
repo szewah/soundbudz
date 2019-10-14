@@ -10,6 +10,12 @@ class Navigation extends Component {
         isAuthenticated: false
     }
 
+    hideNav = (event) => {
+        event.preventDefault();
+
+
+    }
+
     render() {
         return (
             <Navbar bg="light" expand="sm">
@@ -22,17 +28,17 @@ class Navigation extends Component {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                {this.state.isAuthenticated ? 
+                {this.state.isAuthenticated ? (
                      <Nav className="ml-auto">
-                        <Link to="/registration">Registration</Link>
-                        <Link to="/login">Login</Link>
+                        <Link onClick={this.hideNav} to="/registration">Registration</Link>
+                        <Link onClick={this.hideNav} to="/login">Login</Link>
                     </Nav> 
-                    : 
+                    ) : ( 
                     <Nav className="ml-auto">
-                        <Link to="/chat">Chat</Link>
-                        <Logout to="/">Logout</Logout>
+                        <Link onClick={this.hideNav} to="/chat">Chat</Link>
+                        <Logout onClick={this.hideNav} to="/">Logout</Logout>
                     </Nav>
-                }
+                )}
                 </Navbar.Collapse>
             </Navbar>
         )

@@ -4,12 +4,21 @@ import {Card, Button} from 'react-bootstrap';
 
 class Chat extends Component {
     state ={
-
+        message: "",
+        messages: []
     }
 
     render() {
         return(
-            <Card>Chat room</Card>
+            <div className="container">
+                <Card 
+                type="text" 
+                name="messageContent" 
+                placeholder='Mesage'
+                value={this.state.message} 
+                />
+                <Button>Send</Button>
+            </div>
         )
     }
 }
