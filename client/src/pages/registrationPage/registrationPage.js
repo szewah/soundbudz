@@ -1,7 +1,7 @@
 import React from 'react';
 import Registration from '../../components/registration/registration';
 
-function RegistrationPage() {
+const RegistrationPage = () => {
     return(
         <div>
             <Registration/>

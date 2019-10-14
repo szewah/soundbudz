@@ -6,6 +6,7 @@ import Login from './pages/loginPage/loginPage'
 import Registration from './pages/registrationPage/registrationPage';
 import LandPage from './pages/landPage/landPage';
 import AuthenticatedRoute from './utils/auth';
+import ChatPage from './pages/chat/chatPage';
 
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 
@@ -22,6 +23,7 @@ function App() {
             <Route exact path ="/login" component={Login}/>
             <AuthenticatedRoute>
               <Route exact path ="/landPage" component={LandPage}/>
+              <Route exact path ="/chat" component={ChatPage}/>
             </AuthenticatedRoute>
           </Switch>
       </div>

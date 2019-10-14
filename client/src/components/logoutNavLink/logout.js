@@ -7,7 +7,6 @@ class LogoutNavLink extends Component {
 
     logoutClick = (event) => {
         event.preventDefault();
-        alert("logged out!");
         localStorage.clear()
         this.props.history.push('/');
     }
