@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Form, Button} from 'react-bootstrap';
+import {Form, Button} from 'react-bootstrap';
 
 
 class Chat extends Component {
