@@ -30,7 +30,7 @@ class Login extends Component {
             console.log(res);
             localStorage.setItem('cool-jwt', res.data.token)
             let decoded = jwt_decode(res.data.token);
-            console.log(decoded);
+            console.log("This is the decoded part ", decoded);
             this.props.history.push('/landPage');
         })
         this.setState({email: '', password: ''})

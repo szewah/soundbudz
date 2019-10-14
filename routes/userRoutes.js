@@ -49,7 +49,7 @@ router.post('/login', (req, res) => {
                     id: user.id,
                     name: user.firstName
                 };
-                console.log("Testing payload " + payLoad.name);
+                console.log("Testing payload " + payLoad.id);
                 //tokem creation
                 jwToken.sign(payLoad, keys.secretOrKey, {expiresIn: '1h'},
                 (err,token) => {
