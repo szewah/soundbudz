@@ -33,13 +33,13 @@ class Navigation extends Component {
 
                         {this.state.isAuthenticated ? (
                              <Nav className="ml-auto">
-                                <Link onClick={this.hideNav} to="/chat">Chat</Link>
-                                <Logout onClick={this.hideNav} to="/">Logout</Logout>
+                                <Link onClick={this.hideNav} to="/chat">Chat</Link>
+                                <Logout onClick={this.hideNav} to="/">Logout</Logout>
                             </Nav> 
                             ):(
                             <Nav className="ml-auto">
                                 <Link onClick={this.hideNav} to="/registration">Registration</Link>
-                                <Link onClick={this.hideNav} to="/login">Login</Link>
+                                <Link onClick={this.hideNav} to="/login">Login</Link>
                             </Nav>
                         )}
 
