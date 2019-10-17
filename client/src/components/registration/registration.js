@@ -25,7 +25,7 @@ class Registration extends Component {
             console.log(response1);
             this.setState({apiResponse: response1})
         })    
-        };
+    };
 
     componentDidMount(){
         this.apiCall();

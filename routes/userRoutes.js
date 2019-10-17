@@ -67,41 +67,10 @@ router.post('/login', (req, res) => {
     });
 });
 
-
-// router.get('/landingPage', verifyToken, (req, res) => {
-//     jwt.verify(req.token, keys.secretOrKey, (error, authData) => {
-//         if(error) {
-//             res.sendStatus(403);
-//         } else {
-//             res.json({
-//                 message: "Post created",
-//                 authData,
-//             })
-//         }
-//     })
-// })
-
-//vertify token
-// function verifyToken(req, res, next) {
-//     //get the auth header value
-//     var bearerHeader = req.headers["Authorization"];
-//     //check if bearer is undefined
-//     if (typeof bearerHeader !== undefined) {
-//         var bearer = bearerHeader.split(' ');
-//         var bearerToken = bearer[1];
-//         //set the token
-//         req.token = bearerToken;
-//         //call next middlewear
-//         next();
-//     } else {
-//         //forbidden
-//         res.sendStatus(403);
-//     }
-
-// }
-
 // Find all users
 router.get('/all', userController.findAll);
 
+//Find one user
+router.get('/oneUser', userController.findById);
 
 module.exports = router;

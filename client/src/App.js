@@ -5,7 +5,7 @@ import EventsPage from './pages/eventsPage/eventsPage';
 import Login from './pages/loginPage/loginPage'
 import Registration from './pages/registrationPage/registrationPage';
 import LandPage from './pages/landPage/landPage';
-import AuthenticatedRoute from './utils/auth';
+import AuthenticatedRoute from './_helpers/auth';
 import ChatPage from './pages/chat/chatPage';
 
 import { BrowserRouter, Route, Switch} from "react-router-dom";

@@ -1,0 +1,7 @@
+.logoutbtn-container {
+    margin: auto;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -5,8 +5,13 @@ import './style.css';
 
 class LogoutNavLink extends Component {
 
+    state = {
+        isAuthenticated: true
+    }
+
     logoutClick = (event) => {
         event.preventDefault();
+        this.setState({isAuthenticated: false});
         localStorage.clear()
         this.props.history.push('/');
     }
