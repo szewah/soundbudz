@@ -8,52 +8,38 @@ import axios from 'axios';
 
 class landingPage extends Component  {
     state = {
-        name: null
+        apiResponse: []
     }
 
-
-    // apiCall(id) {
-
-        
-    //     axios.get("/user/oneUser")
-    //     .then((response) => {
-    //         var response1 = response.data;
-    //         console.log(response1);
-    //         this.setState({name: response1})
-    //     })    
-    // };
+    apiCall() {
+        axios.get("/user/all")
+        .then((response) => {
+            var response1 = response.data;
+            console.log(response1);
+            this.setState({apiResponse: response1})
+        })    
+    };
 
     componentDidMount() {
-        // this.apiCall()
-            const token = jwt();
-            let decoded = jwt_decode(token);
-            // console.log("This is the decoded part ", decoded.id);
-            axios.get('/user/oneUser', {
-                params: {
-                    id: decoded.id
-                }
-            })
-            .then(response => {
-                console.log(response);
-                // var response1 = response.data;
-                // console.log(response1[0].name);
-                // this.setState({name: response1})
-            })
-            .catch(response => {console.log(response)});
+        this.apiCall()
     }
 
     render() {
-
-
-
+        const token = jwt();
+        var decoded = jwt_decode(token);
+        var tokenId = decoded.id;
+        console.log("This is the decoded part on the landing page", tokenId);
+        const items = this.state.apiResponse.map((item, key) => {
+            if (item.id === tokenId) {
+            return <span key={item.id}>{item.firstName}</span>
+            }
+        })
     return  (
         <div>
             <div className="container">
-                <p>Hello, this is a private landing page</p>
-                <ul>Yes yes</ul>
+                <h3>Hello {items}, this is a private landing page</h3>
                 <Button/>
             </div>
-            
         </div>
         )
     }

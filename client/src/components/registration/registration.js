@@ -1,6 +1,7 @@
 //Form component for registration
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
+import {withRouter} from 'react-router-dom';
 // import { withRouter } from "react-router-dom";
 import './style.css';
 import axios from 'axios';
@@ -16,20 +17,6 @@ class Registration extends Component {
         regSuccess: false,
         apiResponse: []
     }
-
-    apiCall() {
-        axios.get("/user/all")
-        .then((response) => {
-            // var response1 = response.data[1].firstName;
-            var response1 = response.data;
-            console.log(response1);
-            this.setState({apiResponse: response1})
-        })    
-    };
-
-    componentDidMount(){
-        this.apiCall();
-    };
 
     handleChange = (event) => {
         this.setState({
@@ -55,21 +42,12 @@ class Registration extends Component {
             password: '',
             confirmPassword: ''
         })
+        this.props.history.push('/login')
     };
 
     render() {
-
-        const items = this.state.apiResponse.map((item, key) => {
-            return <li key={item.id}>
-                Id: {item.id} 
-                Name: {item.firstName} {item.lastName} 
-                Email: {item.email} 
-                Password: {item.password}</li>
-        })
         return (
             <div className="login-email-container">
-                <p className='apiTest'>This is testing the response: </p>
-                <ul>{items}</ul>
                 <Form onSubmit={this.sendRegFormData}>
                     <Form.Group>
                         <Form.Control 
@@ -130,4 +108,4 @@ class Registration extends Component {
     }
 }
 
-export default Registration;
+export default withRouter(Registration);
