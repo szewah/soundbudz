@@ -8,16 +8,12 @@ module.exports = {
         })
         .catch((err) => res.status(422).json(err));
     },
-    findById: function(req, res) {
-        var email = req.body.email;
-        console.log("These are the params  " + req.params);
-        User.findOne({
-            where: {email}
-        })
+    findByPk: function(req, res) {
+        User.findByPk(req.params.id)
         .then(user => {
             res.json(user)
         })
-        .catch((err) => res.status(422).json(err));
+        .catch((err) => console.log(err));
     }
 };
 

@@ -71,6 +71,6 @@ router.post('/login', (req, res) => {
 router.get('/all', userController.findAll);
 
 //Find one user
-router.get('/oneUser', userController.findById);
+router.get('/oneUser', userController.findByPk);
 
 module.exports = router;
