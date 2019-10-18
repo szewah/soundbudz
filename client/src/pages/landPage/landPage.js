@@ -8,15 +8,21 @@ import axios from 'axios';
 
 class landingPage extends Component  {
     state = {
-        apiResponse: []
+        // apiResponse: []
+        name: ""
     }
 
     apiCall() {
-        axios.get("/user/all")
+        const token = jwt();
+        var decoded = jwt_decode(token);
+        var tokenId = decoded.id;
+        axios.get("/user/getUser", {
+            params: {ID: tokenId}
+        })
         .then((response) => {
-            var response1 = response.data;
-            console.log(response1);
-            this.setState({apiResponse: response1})
+            var userName = response.data.firstName;
+            console.log("Individual response: " , userName);
+            this.setState({name: userName})
         })    
     };
 
@@ -25,19 +31,11 @@ class landingPage extends Component  {
     }
 
     render() {
-        const token = jwt();
-        var decoded = jwt_decode(token);
-        var tokenId = decoded.id;
-        console.log("This is the decoded part on the landing page", tokenId);
-        const items = this.state.apiResponse.map((item, key) => {
-            if (item.id === tokenId) {
-            return <span key={item.id}>{item.firstName}</span>
-            }
-        })
     return  (
         <div>
             <div className="container">
-                <h3>Hello {items}, this is a private landing page</h3>
+                {/* <h3>Hello {items}, this is a private landing page</h3> */}
+                <h3>Hello {this.state.name}, this is a private landing page</h3>
                 <Button/>
             </div>
         </div>

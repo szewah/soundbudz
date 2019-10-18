@@ -8,9 +8,10 @@ module.exports = {
         })
         .catch((err) => res.status(422).json(err));
     },
-    findByPk: function(req, res) {
-        User.findByPk(req.params.id)
+    findOne: function(req, res) {
+        User.findOne(req.params.id)
         .then(user => {
+            console.log("[DEBUG] users " + user.id)
             res.json(user)
         })
         .catch((err) => console.log(err));
