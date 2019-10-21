@@ -14,24 +14,13 @@ import { BrowserRouter, Route, Switch} from "react-router-dom";
 
 class App extends Component {
 
-  state = {
-    auth: false
-  }
-
-  componentDidMount() {
-    var token = getJWT();
-    if (token) {
-      this.setState({auth: true})
-    } else{
-      this.setState({auth: false})
-    }
-  }
+  state = {};
 
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar isAuth={this.state.auth}/>
+          <Navbar token={getJWT}/>
             <Switch>
               <Route exact path = "/" component={HomePage} />
               <Route exact path ="/events" component={EventsPage} />
@@ -44,7 +33,8 @@ class App extends Component {
             </Switch>
         </div>
       </BrowserRouter>
-    )};
+    );
+  }
 }
 
 export default App;

@@ -5,22 +5,25 @@ import Logo from '../../logo/blacklogo.png';
 import '../navbar/style.css'
 
 class Navigation extends Component {
+
     state = {
-        isLoggedOut: null,
-        updateView: null
+        isAuthenticated: null
+    };
+
+    componentDidMount() {
+        const {token} = this.props;
+        console.log('line 16' + token);
+        if (token != null) {
+        this.setState({
+            isAuthenticated: !this.state.isAuthenticated
+        })
+    }
     }
 
-    updateNavigation = view => {
-        this.setState({updateView: view});
-    } 
+    
 
-    logoutClick = (event) => {
-        event.preventDefault();
-        this.setState({isLoggedOut: true});
-        window.localStorage.clear();
-    }
-
-    render() {
+    render () {
+        console.log(this.state.isAuthenticated);
         return (
             <Navbar bg="light" expand="sm">
                 <Navbar.Brand href="/">
@@ -34,21 +37,23 @@ class Navigation extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
 
-                    {this.props.auth? (
-                            <Nav className="ml-auto" upDateNav={this.updateNavigation}>
-                                <Link to="/registration">Registration</Link>
-                                <Link to="/login">Login</Link>
+                    {this.state.isAuthenticated ? (
+                            <Nav className="ml-auto">
+                            <Link to="/chat">Chat</Link>
+                            <Link to="/login">Logout</Link>
                         </Nav> 
                         ):(
                         <Nav className="ml-auto">
-                            <Link to="/chat">Chat</Link>
-                            <Link to="/login" onClick={this.logoutClick}>Logout</Link>
+                            <Link to="/registration">Registration</Link>
+                            <Link to="/login">Login</Link>
                         </Nav>
                     )}
 
                 </Navbar.Collapse>
             </Navbar>
-        )}
+        )
+    }
 }
+
 
 export default Navigation;
