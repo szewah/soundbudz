@@ -10,6 +10,7 @@ module.exports = {
     },
     findOne: function(req, res) {
         User.findOne(req.params.id)
+        // User.findByPk(req.params.id)
         .then(user => {
             console.log("[DEBUG] users " + user.id)
             res.json(user)

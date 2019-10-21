@@ -34,7 +34,6 @@ class landingPage extends Component  {
     return  (
         <div>
             <div className="container">
-                {/* <h3>Hello {items}, this is a private landing page</h3> */}
                 <h3>Hello {this.state.name}, this is a private landing page</h3>
                 <Button/>
             </div>
