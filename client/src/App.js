@@ -7,16 +7,10 @@ import Registration from './pages/registrationPage/registrationPage';
 import LandPage from './pages/landPage/landPage';
 import AuthenticatedRoute from './_helpers/auth';
 import ChatPage from './pages/chat/chatPage';
-// import getJWT from './_helpers/getJwt';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 
 
 class App extends Component {
-
-  state = {
-    isAuthenticated: null
-  };
-
 
   render() {
     return (
