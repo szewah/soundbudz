@@ -27,9 +27,10 @@ class SearchField extends Component {
         const ticketmasterURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=";
         //api key
         const searchKey = process.env.REACT_APP_TM_KEY;
-        //search term
+        //search term: taking out the white spaces with split("") between words 
+        //and using '+' to join the terms
         const term = this.state.search.split(" ").join("+");
-        //axios get ticket master results 
+        //axios makes a get call to the ticket master api
         axios.get(corsAnywhere + ticketmasterURL + term + "&apikey=" + searchKey)
         .then(res => {
             // results of the search

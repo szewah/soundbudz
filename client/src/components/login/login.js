@@ -8,11 +8,25 @@ import { withRouter } from 'react-router-dom';
 class Login extends Component {
     state = {
         email: '',
-        password: ''
+        password: '',
+        errors: {}
     } 
 
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
+    }
+
+    validation = () => {
+        const {email, password} = this.state;
+        let errors = {email:'', password: ''}
+        if (email === undefined) {
+            errors.email = 'Please enter a valid email'
+        }
+
+        if (password === undefined) {
+            errors.password = 'Please enter a password'
+        };
+        this.setState({errors});
     }
 
     handleSubmit = (event) =>{
@@ -24,7 +38,6 @@ class Login extends Component {
         axios
         .post('/user/login', loginUser)
         .then(res => {
-            console.log(res);
             localStorage.setItem('cool-jwt', res.data.token)
             this.props.history.push('/landPage');
         })
@@ -36,11 +49,25 @@ class Login extends Component {
             <div className="login-email-container">
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
-                        <Form.Control type="email" name="email"  value={this.state.email} placeholder="Email" onChange={this.handleChange}></Form.Control>
+                        <Form.Control 
+                            type="email" 
+                            name="email"  
+                            value={this.state.email} 
+                            placeholder="Email" 
+                            onChange={this.handleChange}>
+                        </Form.Control>
                     </Form.Group>
+
                     <Form.Group>
-                        <Form.Control type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange}></Form.Control>
+                        <Form.Control 
+                            type="password" 
+                            name="password" 
+                            value={this.state.password} 
+                            placeholder="Password" 
+                            onChange={this.handleChange}>
+                        </Form.Control>
                     </Form.Group>
+
                     <div className="btn-container">
                         <Button type="submit">Submit</Button>
                     </div>

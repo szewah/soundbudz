@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import Button from '../../components/logoutBtn/logoutBtn';
-// import axios from 'axios';
 import jwt from '../../_helpers/getJwt';
 import jwt_decode from 'jwt-decode';
 import './style.css';
@@ -35,7 +33,6 @@ class landingPage extends Component  {
         <div>
             <div className="container">
                 <h3>Hello {this.state.name}, this is a private landing page</h3>
-                <Button/>
             </div>
         </div>
         )
