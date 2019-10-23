@@ -9,24 +9,10 @@ class Login extends Component {
     state = {
         email: '',
         password: '',
-        errors: {}
     } 
 
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
-    }
-
-    validation = () => {
-        const {email, password} = this.state;
-        let errors = {email:'', password: ''}
-        if (email === undefined) {
-            errors.email = 'Please enter a valid email'
-        }
-
-        if (password === undefined) {
-            errors.password = 'Please enter a password'
-        };
-        this.setState({errors});
     }
 
     handleSubmit = (event) =>{
@@ -39,7 +25,10 @@ class Login extends Component {
         .post('/user/login', loginUser)
         .then(res => {
             localStorage.setItem('cool-jwt', res.data.token)
-            this.props.history.push('/landPage');
+            this.props.history.push({
+                pathname: '/landPage',
+                state: {isAuthenticated: true}
+                });
         })
         this.setState({email: '', password: ''})
     };

@@ -2,20 +2,16 @@ import React, {Component} from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 import {Link, withRouter} from 'react-router-dom';
 import Logo from '../../logo/blacklogo.png';
-import getJWT from '../../_helpers/getJwt';
+// import getJWT from '../../_helpers/getJwt';
 import './style.css'
 
 class NavAuth extends Component {
 
     state = {
-        isAuthenticated: false
+        isAuthenticated: null
     }
 
     componentDidMount() {
-        var jwt = getJWT();
-        if (jwt) {
-        this.setState({isAuthenticated: true})
-        }
         console.log('Component did Mount')
         console.log('===================')
     }
@@ -28,7 +24,8 @@ class NavAuth extends Component {
     }
 
     render () {
-        const isAuthenticated = this.state.isAuthenticated;
+        console.log();
+        const authenticated = this.props.history.location.state;
     return (
         <Navbar bg="light" expand="sm">
             <Navbar.Brand href="/">
@@ -41,7 +38,7 @@ class NavAuth extends Component {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                {isAuthenticated ? (
+                {authenticated ? (
                 <Nav className="ml-auto">
                     <Link to="/chat">Chat</Link>
                     <Link to="/login" onClick = {this.onLogout}>Logout</Link>
