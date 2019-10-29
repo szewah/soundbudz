@@ -8,12 +8,15 @@ import LandPage from './pages/landPage/landPage';
 import AuthenticatedRoute from './_helpers/auth';
 import ChatPage from './pages/chat/chatPage';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
+import {Provider} from 'react-redux';
+import Store from './store';
 
 
 class App extends Component {
 
   render() {
     return (
+      <Provider store={Store}>
       <BrowserRouter>
         <div className="App">
         <Navbar/>
@@ -29,6 +32,7 @@ class App extends Component {
             </Switch>
         </div>
       </BrowserRouter>
+      </Provider>
     );
   }
 }
