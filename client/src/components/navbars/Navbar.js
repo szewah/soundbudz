@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 import {Link, withRouter} from 'react-router-dom';
 import Logo from '../../logo/blacklogo.png';
-// import getJWT from '../../_helpers/getJwt';
 import './style.css'
 
 class NavAuth extends Component {
 
     state = {
-        isAuthenticated: null
+        isLoggedOut: null
     }
 
     componentDidMount() {
@@ -19,7 +18,7 @@ class NavAuth extends Component {
     onLogout = e => {
         e.preventDefault();
         window.localStorage.clear();
-        this.setState({isAuthenticated: false});
+        this.setState({isAuthenticated: true});
         this.props.history.push('/login');
     }
 
