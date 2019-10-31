@@ -17,21 +17,21 @@ class App extends Component {
   render() {
     return (
       <Provider store={Store}>
-      <BrowserRouter>
-        <div className="App">
-        <Navbar/>
-            <Switch>
-              <Route exact path = "/" component={HomePage} />
-              <Route exact path ="/events" component={EventsPage} />
-              <Route exact path ="/registration" component={Registration}/>
-              <Route exact path ="/login" component={Login}/>
-              <AuthenticatedRoute>
-                <Route exact path ="/landPage" component={LandPage}/>
-                <Route exact path ="/chat" component={ChatPage}/>
-              </AuthenticatedRoute>
-            </Switch>
-        </div>
-      </BrowserRouter>
+        <BrowserRouter>
+          <div className="App">
+          <Navbar/>
+              <Switch>
+                <Route exact path = "/" component={HomePage} />
+                <Route exact path ="/events" component={EventsPage} />
+                <Route exact path ="/registration" component={Registration}/>
+                <Route exact path ="/login" component={Login}/>
+                <AuthenticatedRoute>
+                  <Route exact path ="/landPage" component={LandPage}/>
+                  <Route exact path ="/chat" component={ChatPage}/>
+                </AuthenticatedRoute>
+              </Switch>
+          </div>
+        </BrowserRouter>
       </Provider>
     );
   }

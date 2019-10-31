@@ -45,3 +45,7 @@ h3 {
     margin-top: 70px;
     text-align: center;
 }
+
+p {
+    margin-top: 10px !important;
+}
