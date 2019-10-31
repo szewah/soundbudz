@@ -1,12 +1,23 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../_helpers/setAuthToken";
-import {SET_CURRENT_USER} from './types';
+import {actionTypes} from './actionTypes';
+
+export const registerUser = (newUser, history) => (dispatch) => {
+    axios
+        .post('/user/new', newUser)
+        .then(res => history.push('/login'))
+        .catch(err => dispatch({
+            type: actionTypes.getErrors,
+            payload: err.response.data
+        }))
+};
 
 export const loginUser = (userData) => (dispatch) => {
     axios
-        .post('/user/login', loginUser)
+        .post('/user/login', userData)
         .then(res => {
+            console.log(res.data);
             const {token} = res.data
             localStorage.setItem('cool-jwt', token);
             setAuthToken(token);
@@ -17,7 +28,7 @@ export const loginUser = (userData) => (dispatch) => {
 
 export const setCurrentUser = decoded => {
     return {
-        type: SET_CURRENT_USER,
+        type: actionTypes.setCurrentUser,
         payload: decoded
     };
 };

@@ -2,10 +2,9 @@
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import {withRouter} from 'react-router-dom';
-// import { withRouter } from "react-router-dom";
+import {connect} from "react-redux";
+import {registerUser} from '../../actions/authAction';
 import './style.css';
-import axios from 'axios';
-
 
 class Registration extends Component {
     state = {
@@ -13,9 +12,22 @@ class Registration extends Component {
         registerSurname: '',
         registerEmail: '',
         password: '',
-        confirmPassword: '',
-        regSuccess: false,
-        apiResponse: []
+        confirmPassword: ''
+    }
+
+    componentDidMount() {
+        // If logged in and user navigates to Register page, should redirect them to dashboard
+        if (this.props.auth.isAuthenticated) {
+          this.props.history.push("/landPage");
+        }
+      }
+    
+    componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+        this.setState({
+        errors: nextProps.errors
+        });
+    }
     }
 
     handleChange = (event) => {
@@ -32,17 +44,8 @@ class Registration extends Component {
             lastName: this.state.registerSurname,
             email: this.state.registerEmail,
             password: this.state.password
-        }
-        console.log(newUser);
-        axios.post('/user/new', newUser);
-        this.setState({
-            registerName: '',
-            registerSurname:'',
-            registerEmail: '',
-            password: '',
-            confirmPassword: ''
-        })
-        this.props.history.push('/login')
+        };
+        this.props.registerUser(newUser, this.props.history);        
     };
 
     render() {
@@ -108,4 +111,11 @@ class Registration extends Component {
     }
 }
 
-export default withRouter(Registration);
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(
+    mapStateToProps,
+    { registerUser }
+  )(withRouter(Registration));

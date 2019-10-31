@@ -2,22 +2,39 @@ import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './style.css';
 import {connect} from 'react-redux';
-import {loginUser} from '../../actions/auth';
-
+import {loginUser} from '../../actions/authAction';
 
 class Login extends Component {
     state = {
         email: '',
-        password: '',
+        password: ''
     } 
 
+    componentDidMount() {
+        // If logged in and user navigates to Login page, should redirect them to dashboard
+        console.log('This is the prop', this.props);
+        if (this.props.auth.isAuthenticated) {
+          this.props.history.push("/landPage");
+        }
+    };
+    
+    componentWillReceiveNextProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push("/landPage");
+          }
+        if (nextProps.errors) {
+        this.setState({
+            errors: nextProps.errors
+        });
+        }
+    };
  
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
 
     handleSubmit = (event) =>{
-
+        alert('This was clicked');
         event.preventDefault();
 
         const userData = {
@@ -27,11 +44,10 @@ class Login extends Component {
 
         this.props.loginUser(userData);
         this.setState({email: '', password: ''});
-
     };
 
     render() {
-        console.log(this.porps);
+        console.log('This is after the render ', this.props.auth.isAuthenticated);
         return (
             <div className="login-email-container">
                 <Form onSubmit={this.handleSubmit}>
@@ -66,10 +82,9 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.isAuthenticated
+        auth: state.auth
     }
 };
-
-
+//connect function from react-redux react login component to redux store
 export default connect(mapStateToProps, { loginUser })(Login);
 
