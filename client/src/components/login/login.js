@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './style.css';
-import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {loginUser} from '../../actions/auth';
 
 
 class Login extends Component {
@@ -11,29 +11,27 @@ class Login extends Component {
         password: '',
     } 
 
+ 
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
 
     handleSubmit = (event) =>{
+
         event.preventDefault();
-        const loginUser = {
+
+        const userData = {
             email: this.state.email,
             password: this.state.password
-        }
-        axios
-        .post('/user/login', loginUser)
-        .then(res => {
-            localStorage.setItem('cool-jwt', res.data.token)
-            this.props.history.push({
-                pathname: '/landPage',
-                state: {isAuthenticated: true}
-                });
-        })
-        this.setState({email: '', password: ''})
+        };
+
+        this.props.loginUser(userData);
+        this.setState({email: '', password: ''});
+
     };
 
     render() {
+        console.log(this.porps);
         return (
             <div className="login-email-container">
                 <Form onSubmit={this.handleSubmit}>
@@ -66,5 +64,12 @@ class Login extends Component {
     }
 }
 
-export default withRouter(Login);
+const mapStateToProps = (state) => {
+    return {
+        auth: state.isAuthenticated
+    }
+};
+
+
+export default connect(mapStateToProps, { loginUser })(Login);
 
