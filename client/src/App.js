@@ -9,7 +9,7 @@ import AuthenticatedRoute from './_helpers/auth';
 import ChatPage from './pages/chat/chatPage';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 import {Provider} from 'react-redux';
-import Store from './store';
+import Store from './_helpers/store';
 
 
 class App extends Component {
