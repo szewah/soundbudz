@@ -6,7 +6,11 @@ import {actionTypes} from './actionTypes';
 export const registerUser = (newUser, history) => (dispatch) => {
     axios
         .post('/user/new', newUser)
-        .then(res => history.push('/login'))
+        .then(res => 
+            {
+            console.log('This is the history in the action file ' + history);
+            history.push('/login')
+        })
         .catch(err => dispatch({
             type: actionTypes.getErrors,
             payload: err.response.data
@@ -33,3 +37,8 @@ export const setCurrentUser = decoded => {
     };
 };
 
+export const logoutUser = (user) => (dispatch) => {
+    localStorage.removeItem('cool-jwt');
+    setAuthToken(false);
+    dispatch(setCurrentUser());
+}

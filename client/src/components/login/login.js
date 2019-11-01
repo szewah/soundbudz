@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
+import { withRouter } from "react-router-dom";
 import './style.css';
 import {connect} from 'react-redux';
 import {loginUser} from '../../actions/authAction';
@@ -18,7 +19,7 @@ class Login extends Component {
         }
     };
     
-    componentWillReceiveNextProps(nextProps) {
+    componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
             this.props.history.push("/landPage");
           }
@@ -86,5 +87,5 @@ const mapStateToProps = (state) => {
     }
 };
 //connect function from react-redux react login component to redux store
-export default connect(mapStateToProps, { loginUser })(Login);
+export default connect(mapStateToProps, { loginUser }) (withRouter(Login));
 

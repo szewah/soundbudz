@@ -10,7 +10,9 @@ const store = createStore(
     rootReducer,
     initState,
     compose(
+    //(...)spread operator creates a copy of the middleware array
     applyMiddleware(...middleware),
+    //the following allows us to use redux dev tools
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
     )
