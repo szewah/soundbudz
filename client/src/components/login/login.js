@@ -13,7 +13,7 @@ class Login extends Component {
 
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
-        console.log('This is the prop', this.props);
+        console.log('This is the prop from state', this.props);
         if (this.props.auth.isAuthenticated) {
           this.props.history.push("/landPage");
         }
@@ -21,6 +21,7 @@ class Login extends Component {
     
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
+            console.log('This is part of componentWillReceive')
             this.props.history.push("/landPage");
           }
         if (nextProps.errors) {
@@ -44,7 +45,6 @@ class Login extends Component {
         };
 
         this.props.loginUser(userData);
-        this.setState({email: '', password: ''});
     };
 
     render() {
