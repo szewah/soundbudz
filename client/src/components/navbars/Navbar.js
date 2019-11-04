@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 import {Link, withRouter} from 'react-router-dom';
 import Logo from '../../logo/blacklogo.png';
+import {connect} from 'react-redux';
 import './style.css'
 
 class NavAuth extends Component {
 
-    state = {
-        isLoggedOut: null
-    }
+    state = {}
 
     componentDidMount() {
         console.log('Component did Mount')
@@ -23,8 +22,8 @@ class NavAuth extends Component {
     }
 
     render () {
-        console.log();
-        const authenticated = this.props.history.location.state;
+        const { isAuthenticated } = this.props.auth;
+        console.log(isAuthenticated);
     return (
         <Navbar bg="light" expand="sm">
             <Navbar.Brand href="/">
@@ -37,7 +36,7 @@ class NavAuth extends Component {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                {authenticated ? (
+                {isAuthenticated ? (
                 <Nav className="ml-auto">
                     <Link to="/chat">Chat</Link>
                     <Link to="/login" onClick = {this.onLogout}>Logout</Link>
@@ -50,9 +49,15 @@ class NavAuth extends Component {
                 )}
             </Navbar.Collapse>
         </Navbar>
-    )
-}
+    )}
 
 }
 
-export default withRouter(NavAuth);
+const mapStateToProps = state => ({
+    auth: state.auth
+  });
+
+export default connect(
+    mapStateToProps,
+    null
+  )(withRouter(NavAuth));
