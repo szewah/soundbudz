@@ -17,7 +17,6 @@ class NavAuth extends Component {
     onLogout = e => {
         e.preventDefault();
         window.localStorage.clear();
-        this.setState({isAuthenticated: true});
         this.props.history.push('/login');
     }
 
