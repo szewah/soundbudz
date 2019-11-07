@@ -5,7 +5,7 @@ import EventsPage from './pages/eventsPage/eventsPage';
 import Login from './pages/loginPage/loginPage'
 import Registration from './pages/registrationPage/registrationPage';
 import LandPage from './pages/landPage/landPage';
-import AuthenticatedRoute from './_helpers/auth';
+import Private from './components/privateRoute/privateRoute';
 import ChatPage from './pages/chat/chatPage';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 import {Provider} from 'react-redux';
@@ -25,10 +25,10 @@ class App extends Component {
                 <Route exact path ="/events" component={EventsPage} />
                 <Route exact path ="/registration" component={Registration}/>
                 <Route exact path ="/login" component={Login}/>
-                <AuthenticatedRoute>
+                <Private>
                   <Route exact path ="/landPage" component={LandPage}/>
                   <Route exact path ="/chat" component={ChatPage}/>
-                </AuthenticatedRoute>
+                </Private>
               </Switch>
           </div>
         </BrowserRouter>
