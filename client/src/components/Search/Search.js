@@ -21,8 +21,7 @@ class SearchField extends Component {
 
 
     apiCall = () => {
-        //cross origin set up to allow for api search
-        const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+
         //ticket master api
         const ticketmasterURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=";
         //api key
@@ -31,7 +30,7 @@ class SearchField extends Component {
         //and using '+' to join the terms
         const term = this.state.search.split(" ").join("+");
         //axios makes a get call to the ticket master api
-        axios.get(corsAnywhere + ticketmasterURL + term + "&apikey=" + searchKey)
+        axios.get(ticketmasterURL + term + "&apikey=" + searchKey)
         .then(res => {
             // results of the search
             console.log(res.data._embedded.events[0]._embedded);

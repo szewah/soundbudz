@@ -19,7 +19,7 @@ class Login extends Component {
         }
     };
     
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
             console.log('This is part of componentWillReceive')
             this.props.history.push("/landPage");

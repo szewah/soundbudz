@@ -19,10 +19,11 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-//Set up cors
+// Set up cors
 app.use(
   cors({
-    origin: "*",
+    origin: '*',
+    // requireHeader: ['origin', 'x-requested-with'],
     allowedHeaders: "Authorization",
     preflightContinue: false,
     credentials: true,

@@ -14,7 +14,9 @@ class NavAuth extends Component {
         e.preventDefault();
         window.localStorage.clear();
         this.props.logoutUser();
+        // this.props.history.push('/login');
     }
+
 
     render () {
         const { isAuthenticated } = this.props.auth;
@@ -54,5 +56,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    {logoutUser}
+   {logoutUser}
   )(withRouter(NavAuth));
