@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import { BrowserRouter, Route, Switch} from "react-router-dom";
+
+//components and pages
 import Navbar from './components/navbars/Navbar';
 import HomePage from './pages/homepage/homepage';
 import EventsPage from './pages/eventsPage/eventsPage';
@@ -7,10 +10,30 @@ import Registration from './pages/registrationPage/registrationPage';
 import LandPage from './pages/landPage/landPage';
 import Private from './components/privateRoute/privateRoute';
 import ChatPage from './pages/chat/chatPage';
-import { BrowserRouter, Route, Switch} from "react-router-dom";
+
+//redux
 import {Provider} from 'react-redux';
 import Store from './_helpers/store';
 
+//authentication
+import jwt_decode from 'jwt-decode';
+import setAuthToken from './_helpers/setAuthToken';
+import { setCurrentUser, logoutUser } from "./actions/authAction";
+
+
+if (localStorage.jwt_decode) {
+  setAuthToken(localStorage.jwt_decode);
+
+  const decoded = jwt_decode(localStorage.jwt_decode);
+  Store.dispatch(setCurrentUser(decoded));
+
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    Store.dispatch(logoutUser());
+
+    window.location.href = "/login";
+  }
+}
 
 class App extends Component {
 
@@ -20,15 +43,16 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
           <Navbar/>
-              <Switch>
+
                 <Route exact path = "/" component={HomePage} />
                 <Route exact path ="/events" component={EventsPage} />
                 <Route exact path ="/registration" component={Registration}/>
                 <Route exact path ="/login" component={Login}/>
-                <Private>
-                  <Route exact path ="/landPage" component={LandPage}/>
-                  <Route exact path ="/chat" component={ChatPage}/>
-                </Private>
+                <Switch>
+                  <Private>
+                    <Route exact path ="/landPage" component={LandPage}/>
+                    <Route exact path ="/chat" component={ChatPage}/>
+                  </Private>
               </Switch>
           </div>
         </BrowserRouter>
