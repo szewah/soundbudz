@@ -20,16 +20,16 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Set up cors
-app.use(
-  cors({
-    origin: '*',
-    // requireHeader: ['origin', 'x-requested-with'],
-    allowedHeaders: "Authorization",
-    preflightContinue: false,
-    credentials: true,
-    optionSuccessStatus: 200
-  })
-)
+// app.use(
+//   cors({
+//     origin: '*',
+//     // requireHeader: ['origin', 'x-requested-with'],
+//     allowedHeaders: "Authorization",
+//     preflightContinue: false,
+//     credentials: true,
+//     optionSuccessStatus: 200
+//   })
+// )
 
 //initializes the passport configuration
 app.use(passport.initialize());

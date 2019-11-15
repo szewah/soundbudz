@@ -56,8 +56,8 @@ class EventsListing extends Component {
                                     <i className="fas fa-ticket-alt"></i>
                                     Buy Ticket
                                 </Button>
-                                <Button><i className="fas fa-users"></i>Join Group</Button>
-                                {/* <Button><i className="fas fa-directions"></i>Getting There</Button> */}
+                                
+                                <Button href="/login"><i className="fas fa-users"></i>Join Group</Button>
                             </div>
 
                         </div>
