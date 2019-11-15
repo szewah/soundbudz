@@ -17,9 +17,8 @@ class NavAuth extends Component {
         // this.props.history.push('/login');
     }
 
-
     render () {
-        const { isAuthenticated } = this.props.auth;
+        const { isAuthenticated, user } = this.props.auth;
         console.log(isAuthenticated);
     return (
         <Navbar bg="light" expand="sm">
@@ -35,6 +34,7 @@ class NavAuth extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
                 {isAuthenticated ? (
                 <Nav className="ml-auto">
+                    <Link>{user ? `Welcome ${user.name}`: ''}</Link>
                     <Link to="/chat">Chat</Link>
                     <Link to="/login" onClick = {this.onLogout}>Logout</Link>
                 </Nav> 

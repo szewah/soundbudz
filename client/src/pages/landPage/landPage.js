@@ -1,40 +1,27 @@
 import React, {Component} from 'react';
-import jwt_decode from 'jwt-decode';
+import {connect} from 'react-redux';
 import './style.css';
-import axios from 'axios';
+
 
 class landingPage extends Component  {
-    state = {
-        name: ""
-    }
-
-    apiCall() {
-        const token = localStorage.jwtToken;
-        var decoded = jwt_decode(token);
-        var tokenId = decoded.id;
-        axios.get("/user/getUser", {
-            params: {ID: tokenId}
-        })
-        .then((response) => {
-            var userName = response.data.firstName;
-            console.log("Individual response: " , userName);
-            this.setState({name: userName})
-        })    
-    };
-
-    componentDidMount() {
-        this.apiCall()
-    }
+    
+    state = {}
 
     render() {
+        const {user} = this.props.auth;
+        console.log(user);
     return  (
         <div>
             <div className="container">
-                <h3>Hello {this.state.name}, this is a private landing page</h3>
+                <h3>Hello {user.name}, this is a private landing page</h3>
             </div>
         </div>
         )
     }
 };
 
-export default landingPage;
+const mapStateToProps = state => ({
+    auth: state.auth
+  });
+
+export default connect(mapStateToProps, null)(landingPage);
