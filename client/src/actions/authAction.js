@@ -23,7 +23,7 @@ export const loginUser = (userData) => (dispatch) => {
         .then(res => {
             console.log(res.data);
             const {token} = res.data
-            localStorage.setItem('cool-jwt', token);
+            localStorage.setItem('jwtToken', token);
             setAuthToken(token);
             const decoded = jwt_decode(token);
             dispatch(setCurrentUser(decoded));
@@ -38,7 +38,7 @@ export const setCurrentUser = decoded => {
 };
 
 export const logoutUser = (user) => (dispatch) => {
-    localStorage.removeItem('cool-jwt');
+    localStorage.removeItem('jwtToken');
     setAuthToken(false);
     dispatch(setCurrentUser());
 }

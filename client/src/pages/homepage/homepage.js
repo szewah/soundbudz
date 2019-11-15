@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import Search from '../../components/Search/Search';
 import './style.css';
-import getJWT from '../../_helpers/getJwt';
 
 class HomePage extends Component {
-    state = {
-       
-    }
 
     render(){
     return (

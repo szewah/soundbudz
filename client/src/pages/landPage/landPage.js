@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import jwt from '../../_helpers/getJwt';
 import jwt_decode from 'jwt-decode';
 import './style.css';
 import axios from 'axios';
 
 class landingPage extends Component  {
     state = {
-        // apiResponse: []
         name: ""
     }
 
     apiCall() {
-        const token = jwt();
+        const token = localStorage.jwtToken;
         var decoded = jwt_decode(token);
         var tokenId = decoded.id;
         axios.get("/user/getUser", {

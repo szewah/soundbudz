@@ -3,21 +3,17 @@ import {Navbar, Nav} from 'react-bootstrap';
 import {Link, withRouter} from 'react-router-dom';
 import Logo from '../../logo/blacklogo.png';
 import {connect} from 'react-redux';
+import {logoutUser} from '../../actions/authAction';
 import './style.css'
 
 class NavAuth extends Component {
 
     state = {}
 
-    componentDidMount() {
-        console.log('Component did Mount')
-        console.log('===================')
-    }
-
     onLogout = e => {
         e.preventDefault();
         window.localStorage.clear();
-        this.props.history.push('/login');
+        this.props.logoutUser();
     }
 
     render () {
@@ -58,5 +54,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    null
+    {logoutUser}
   )(withRouter(NavAuth));
