@@ -19,7 +19,6 @@ class NavAuth extends Component {
 
     render () {
         const { isAuthenticated, user } = this.props.auth;
-        console.log(isAuthenticated);
     return (
         <Navbar bg="light" expand="sm">
             <Navbar.Brand href="/">
@@ -34,7 +33,7 @@ class NavAuth extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
                 {isAuthenticated ? (
                 <Nav className="ml-auto">
-                    <Link>{user ? `Welcome ${user.name}`: ''}</Link>
+                    <Link style={{textDecoration: 'none'}}>{user ? `Welcome ${user.name}`: ''}</Link>
                     <Link to="/chat">Chat</Link>
                     <Link to="/login" onClick = {this.onLogout}>Logout</Link>
                 </Nav> 
