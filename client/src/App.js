@@ -43,18 +43,17 @@ class App extends Component {
       <Provider store={Store}>
         <BrowserRouter>
           <div className="App">
-          <Navbar/>
-
-                <Route exact path = "/" component={HomePage} />
-                <Route exact path ="/events" component={EventsPage} />
-                <Route exact path ="/registration" component={Registration}/>
-                <Route exact path ="/login" component={Login}/>
-                <Switch>
-                  <Private>
-                    <Route exact path ="/landPage" component={LandPage}/>
-                    <Route exact path ="/chat" component={ChatPage}/>
-                  </Private>
+            <Navbar/>
+              <Route exact path = "/" component={HomePage} />
+              <Route exact path ="/events" component={EventsPage} />
+              <Route exact path ="/registration" component={Registration}/>
+              <Route exact path ="/login" component={Login}/>
+              <Switch>
+                <Private exact path ="/landPage" component={LandPage}/>
               </Switch>
+              <Switch>
+                <Private exact path ="/chat" component={ChatPage}/>
+              </Switch>                
           </div>
         </BrowserRouter>
       </Provider>
