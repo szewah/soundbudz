@@ -14,11 +14,6 @@ app.use(bodyParser.json());
 app.use(helmet());
 
 
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
 // Set up cors
 // app.use(
 //   cors({
@@ -37,7 +32,10 @@ require("./config/passport_jwt")(passport);
 //registers our authentication routes with Express.
 app.use(routes);
 
-
+//Serve static assets if we are in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${PORT}`);

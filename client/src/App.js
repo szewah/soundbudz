@@ -17,7 +17,7 @@ import Store from './_helpers/store';
 
 //authentication
 import jwt_decode from 'jwt-decode';
-import setAuthToken from './_helpers/setAuthToken';
+// import setAuthToken from './_helpers/setAuthToken';
 import { setCurrentUser, logoutUser } from "./actions/authAction";
 
 

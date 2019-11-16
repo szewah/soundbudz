@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var userController = require('../controllers/userController');
 var bcrypt = require('bcryptjs');
-var jwToken = require('jsonwebtoken');
+var jwt = require('jsonwebtoken');
 var keys = require('../config/jwtSecret');
 
 
@@ -43,23 +43,22 @@ router.post('/login', (req, res) => {
         }
         bcrypt.compare(password, user.password)
         .then(isMatch => {
-            console.log("Testing isMatch " + isMatch);
             if(isMatch) {
-                var payLoad = {
-                    id: user.id,
-                    name: user.firstName
-                };
-                console.log("Testing payload " + payLoad.id);
-                //tokem creation
-                jwToken.sign(payLoad, keys.secretOrKey, {expiresIn: '1h'},
-                (err,token) => {
+                var payLoad = {id: user.id,name: user.firstName};
+                //token creation
+                jwt.sign(
+                    payLoad, 
+                    keys.secretOrKey, 
+                    {expiresIn: 36000},
+                    (err,token) => {
                     console.log("token is " + token);
-                    if (err) res.status(500).json({message: "Error signing token", raw: err});
-                    res.json({
-                        success: true,
-                        token: `Bearer ${token}`
-                    })
-                });
+                        if (err) res.status(500).json({message: "Error signing token", raw: err});
+                        res.json({
+                            success: true,
+                            token: `Bearer ${token}`
+                        })
+                    }
+                );
             } else {
                 res.status(400).json({message: "Password isn't found"})
             }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
-import {Link, withRouter} from 'react-router-dom';
+import {Link, withRouter, Redirect} from 'react-router-dom';
 import Logo from '../../logo/blacklogo.png';
 import {connect} from 'react-redux';
 import {logoutUser} from '../../actions/authAction';
@@ -14,44 +14,51 @@ class NavAuth extends Component {
         e.preventDefault();
         window.localStorage.clear();
         this.props.logoutUser();
-        // this.props.history.push('/login');
     }
 
     render () {
+
         const { isAuthenticated, user } = this.props.auth;
-    return (
-        <Navbar bg="light" expand="sm">
-            <Navbar.Brand href="/">
-                <img
-                    src={Logo}
-                    className="d-inline-block align-top"
-                    alt="Soundbudz logo"
-                    style={{height: '60px'}}
-                />
-            </Navbar.Brand>
+
+        const authLinks = (
+            <Nav className="ml-auto">
+                <span style={{textDecoration: 'none'}}>{user ? `Welcome ${user.name}`: ''}</span>
+                <Link to="/chat">Chat</Link>
+                <Link to="/login" onClick = {this.onLogout}>Logout</Link>
+            </Nav> 
+        );
+
+        const guestLinks = (
+            <Nav className="ml-auto">
+                <Link to="/registration">Registration</Link>
+                <Link to="/login">Login</Link>
+            </Nav>
+        );
+
+        return (
+            <Navbar bg="light" expand="sm">
+                <Navbar.Brand href="/">
+                    <img
+                        src={Logo}
+                        className="d-inline-block align-top"
+                        alt="Soundbudz logo"
+                        style={{height: '60px'}}
+                    />
+                </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                {isAuthenticated ? (
-                <Nav className="ml-auto">
-                    <Link style={{textDecoration: 'none'}}>{user ? `Welcome ${user.name}`: ''}</Link>
-                    <Link to="/chat">Chat</Link>
-                    <Link to="/login" onClick = {this.onLogout}>Logout</Link>
-                </Nav> 
-                ) :(
-                <Nav className="ml-auto">
-                    <Link to="/registration">Registration</Link>
-                    <Link to="/login">Login</Link>
-                </Nav>
-                )}
+                {isAuthenticated ? authLinks : guestLinks}
             </Navbar.Collapse>
         </Navbar>
     )}
-
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
     auth: state.auth
-  });
+    }
+  };
 
 export default connect(
     mapStateToProps,

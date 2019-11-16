@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './style.css';
 
@@ -23,4 +24,4 @@ const mapStateToProps = state => ({
     auth: state.auth
   });
 
-export default connect(mapStateToProps, null)(landingPage);
+export default connect(mapStateToProps, null)(withRouter(landingPage));
