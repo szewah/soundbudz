@@ -30,7 +30,7 @@ class SearchField extends Component {
         //and using '+' to join the terms
         const term = this.state.search.split(" ").join("+");
         //axios makes a get call to the ticket master api
-        axios.get(ticketmasterURL + term + "&apikey=" + searchKey)
+        axios.get("https://cors-anywhere.herokuapp.com/" + ticketmasterURL + term + "&apikey=" + searchKey)
         .then(res => {
             // results of the search
             console.log(res.data._embedded.events[0]._embedded);

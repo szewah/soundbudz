@@ -19,7 +19,6 @@ class NavAuth extends Component {
     render () {
 
         const { isAuthenticated, user } = this.props.auth;
-        if (!isAuthenticated) return <Redirect to='/login' />
 
         const authLinks = (
             <Nav className="ml-auto">

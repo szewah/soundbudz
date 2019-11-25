@@ -1,4 +1,6 @@
 import {actionTypes} from '../actions/actionTypes';
+import isEmpty from "../validation/is-empty.js";
+
 //set state
 const initState = {
     isAuthenticated: false,
@@ -7,11 +9,12 @@ const initState = {
 
 //the Reducer function takes a state and then an action
 const authReducer = (state = initState, action) => {
+    console.log('This is action payload ' + action.payload);
     switch(action.type) {
         case actionTypes.setCurrentUser:
             return {
                 ...state,
-                isAuthenticated: true,
+                isAuthenticated: !isEmpty(action.payload),
                 user: action.payload
             };
         default:

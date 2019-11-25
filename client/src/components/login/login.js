@@ -46,7 +46,6 @@ class Login extends Component {
     };
 
     render() {
-        console.log('This is after the render ', this.props.auth.isAuthenticated);
         return (
             <div className="login-email-container">
                 <Form onSubmit={this.handleSubmit}>

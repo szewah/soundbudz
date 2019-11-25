@@ -15,16 +15,20 @@ app.use(helmet());
 
 
 // Set up cors
-// app.use(
-//   cors({
-//     origin: '*',
-//     // requireHeader: ['origin', 'x-requested-with'],
-//     allowedHeaders: "Authorization",
-//     preflightContinue: false,
-//     credentials: true,
-//     optionSuccessStatus: 200
-//   })
-// )
+app.use(
+  cors({
+    origin: '*',
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Content-Type", "Accept"],
+    preflightContinue: false,
+    credentials: true,
+    optionSuccessStatus: 200
+  })
+)
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 //initializes the passport configuration
 app.use(passport.initialize());
