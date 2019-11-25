@@ -19,10 +19,11 @@ class NavAuth extends Component {
     render () {
 
         const { isAuthenticated, user } = this.props.auth;
+        if (!isAuthenticated) return <Redirect to='/login' />
 
         const authLinks = (
             <Nav className="ml-auto">
-                <span style={{textDecoration: 'none'}}>{user ? `Welcome ${user.name}`: ''}</span>
+                <span>{user ? `Welcome ${user.name}`: ''}</span>
                 <Link to="/chat">Chat</Link>
                 <Link to="/login" onClick = {this.onLogout}>Logout</Link>
             </Nav> 
