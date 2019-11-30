@@ -9,7 +9,7 @@ const initState = {
 
 //the Reducer function takes a state and then an action
 const authReducer = (state = initState, action) => {
-    console.log('This is action payload ' + action.payload);
+    console.log('This is action payload ' + JSON.stringify(action));
     switch(action.type) {
         case actionTypes.setCurrentUser:
             return {

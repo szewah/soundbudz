@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const setAuthToken = (token) => {
-    console.log('this is the token in setauthtoken ' + token)
+    // console.log('this is the token in setauthtoken ' + token)
     if (token) {
         axios.defaults.headers.common['Authorization'] = "Bearer " + token;
     } else {

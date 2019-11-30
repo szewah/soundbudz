@@ -23,10 +23,11 @@ import { setCurrentUser, logoutUser } from "./actions/authAction";
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
-  setAuthToken(token);
+  // setAuthToken(token);
 
   const decoded = jwt_decode(token);
   Store.dispatch(setCurrentUser(decoded));
+  
 
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {

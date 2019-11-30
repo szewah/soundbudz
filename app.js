@@ -7,6 +7,9 @@ const cors = require("cors");
 const routes = require('./routes');
 const passport = require('passport');
 const helmet = require('helmet');
+//socket io
+// const http = require("http").createServer(app);
+// const io = require('socket.io');
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,6 +32,12 @@ app.use(
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   next();
 // });
+
+//socket io server side
+// io.on('connection', client => {
+//   client.on('event', data => {});
+//   client.on('disconnect', ()=>{})
+// })
 
 //initializes the passport configuration
 app.use(passport.initialize());

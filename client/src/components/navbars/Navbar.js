@@ -12,7 +12,6 @@ class NavAuth extends Component {
 
     onLogout = e => {
         e.preventDefault();
-        window.localStorage.clear();
         this.props.logoutUser();
     }
 
