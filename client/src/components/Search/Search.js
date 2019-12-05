@@ -33,7 +33,8 @@ class SearchField extends Component {
         axios.get("https://cors-anywhere.herokuapp.com/" + ticketmasterURL + term + "&apikey=" + searchKey)
         .then(res => {
             // results of the search
-            console.log(res.data._embedded.events[0]._embedded);
+            // console.log(res.data._embedded.events[0]._embedded);
+            console.log(res.data);
             this.props.history.push({
                 pathname: "/events/",
                 search: `?${this.state.search.split(" ").join("+")}`,
@@ -43,7 +44,6 @@ class SearchField extends Component {
         })
         .catch(err => console.log(err));
     };
-
 
     handleSubmit = (event) => {
         event.preventDefault();

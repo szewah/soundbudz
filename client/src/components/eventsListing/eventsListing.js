@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import { connect } from "react-redux";
+import {createEventGroup} from '../../actions/groupAction';
 // import EventCard from '../eventCard/eventCard';
 import {Button} from 'react-bootstrap';
 import Moment from 'moment';
@@ -13,6 +15,11 @@ class EventsListing extends Component {
         isLoaded: false
     }
 
+    groupAction = () => {
+        alert('this was clicked');
+        // this.props.auth.isAuthenticated ? 
+        // this.props.createGroup : 
+    }
 
     render() {
         const {location} = this.props;
@@ -23,8 +30,8 @@ class EventsListing extends Component {
         //uppercase the first character of the search variable and then add the rest of the 
         //letters from search.
         const searchTerm = search.charAt(0).toUpperCase() + search.slice(1);
-        console.log(searchTerm);
-        console.log("DEBUG" , eventList);
+        // console.log(searchTerm);
+        // console.log("DEBUG" , eventList);
         return(
             <div>
                 <h3>Search results for '{searchTerm}'</h3>
@@ -57,7 +64,7 @@ class EventsListing extends Component {
                                     Buy Ticket
                                 </Button>
                                 
-                                <Button href="/login"><i className="fas fa-users"></i>Join Group</Button>
+                                <Button onClick={this.groupAction}><i className="fas fa-users"></i>Join Group</Button>
                             </div>
 
                         </div>
